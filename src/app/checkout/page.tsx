@@ -4,10 +4,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, CreditCard, Truck, CheckCircle, Lock } from 'lucide-react'
 import { useCart } from '@/contexts/CartContext'
+import { checkoutService } from '@/services/checkoutService'
 
 export default function CheckoutPage() {
   const [step, setStep] = useState(1)
-  const { cart, getCartTotal } = useCart()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+  const { cart, getCartTotal, clearCart } = useCart()
   const [formData, setFormData] = useState({
     // Shipping Information
     firstName: '',
@@ -31,12 +34,79 @@ export default function CheckoutPage() {
   const total = subtotal + shipping
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+    let formattedValue = value
+    
+    // Format card number
+    if (field === 'cardNumber') {
+      formattedValue = checkoutService.formatCardNumber(value)
+    }
+    
+    // Format expiry date
+    if (field === 'expiryDate') {
+      formattedValue = checkoutService.formatExpiryDate(value)
+    }
+    
+    setFormData(prev => ({ ...prev, [field]: formattedValue }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStep(3) // Move to confirmation
+    setIsLoading(true)
+    setError('')
+
+    try {
+      // Validate payment information
+      const isValidPayment = await checkoutService.validatePayment({
+        cardNumber: formData.cardNumber,
+        cardName: formData.cardName,
+        expiryDate: formData.expiryDate,
+        cvv: formData.cvv,
+      })
+
+      if (!isValidPayment) {
+        setError('Please check your payment information')
+        setIsLoading(false)
+        return
+      }
+
+      // Create order
+      const orderData = {
+        items: cart,
+        shipping: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          postalCode: formData.postalCode,
+          province: formData.province,
+        },
+        payment: {
+          cardNumber: formData.cardNumber,
+          cardName: formData.cardName,
+          expiryDate: formData.expiryDate,
+          cvv: formData.cvv,
+        },
+        subtotal,
+        shippingCost: shipping,
+        total,
+      }
+
+      const result = await checkoutService.createOrder(orderData)
+      
+      if (result.success) {
+        clearCart()
+        setStep(3) // Move to confirmation
+      } else {
+        setError(result.message || 'Failed to create order')
+      }
+    } catch (err) {
+      setError('An error occurred while processing your order')
+      console.error('Checkout error:', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const renderShippingForm = () => (
@@ -299,12 +369,18 @@ export default function CheckoutPage() {
                     <h2 className="text-xl font-semibold text-gray-900">Payment Information</h2>
                   </div>
                   {renderPaymentForm()}
+                  {error && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                      <p className="text-red-600 text-sm">{error}</p>
+                    </div>
+                  )}
                   <div className="mt-8">
                     <button
                       onClick={handleSubmit}
-                      className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                      disabled={isLoading}
+                      className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed transition-all duration-300"
                     >
-                      Complete Order
+                      {isLoading ? 'Processing...' : 'Complete Order'}
                     </button>
                   </div>
                 </>
