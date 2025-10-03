@@ -50,7 +50,7 @@ export default function CartPage() {
                 
                 <div className="divide-y divide-gray-200">
                   {cart.map((item) => (
-                    <div key={item.id} className="p-6">
+                    <div key={item._id} className="p-6">
                       <div className="flex items-center space-x-4">
                         {/* Product Image */}
                         <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -76,14 +76,14 @@ export default function CartPage() {
                         {/* Quantity Controls */}
                         <div className="flex items-center space-x-3">
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() => updateQuantity(item._id, item.quantity - 1)}
                             className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
                           >
                             <Minus className="h-4 w-4 text-gray-600" />
                           </button>
                           <span className="w-12 text-center font-medium">{item.quantity}</span>
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() => updateQuantity(item._id, item.quantity + 1)}
                             className="w-8 h-8 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
                           >
                             <Plus className="h-4 w-4 text-gray-600" />
@@ -92,7 +92,7 @@ export default function CartPage() {
                         
                         {/* Remove Button */}
                         <button
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item._id)}
                           className="text-red-500 hover:text-red-700 transition-colors p-2"
                         >
                           <Trash2 className="h-5 w-5" />
