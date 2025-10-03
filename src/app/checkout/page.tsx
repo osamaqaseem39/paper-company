@@ -24,7 +24,7 @@ export default function CheckoutPage() {
     
     // Payment Information
     cardNumber: '',
-    cardName: '',
+    cardName: '', 
     expiryDate: '',
     cvv: '',
   })

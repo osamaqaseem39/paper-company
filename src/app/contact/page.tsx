@@ -85,12 +85,12 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 section-padding">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-pure-white mb-6">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-pure-white/90 max-w-3xl mx-auto leading-relaxed">
             Get in touch with Trade International for all your paper trading, indenting, tender, and HP Paper needs. 
             Our expert team is ready to assist you across Pakistan.
           </p>

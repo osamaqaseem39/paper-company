@@ -56,7 +56,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-jost text-gray-900 antialiased">
+      <body className="font-jost text-charcoal antialiased bg-pure-white">
         <CartProvider>
           <Header />
           <main>{children}</main>
@@ -65,4 +65,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}

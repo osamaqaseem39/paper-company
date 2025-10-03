@@ -155,13 +155,13 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 section-padding">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-pure-white mb-6">
               Trading Services
             </h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-pure-white/90 max-w-4xl mx-auto leading-relaxed">
               Trade International is engaged in trading of various types of paper & board, serving printers and packaging firms across Pakistan with premium quality products and exceptional service.
             </p>
           </div>
@@ -325,19 +325,19 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-primary-600">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Partner with Trade International?
           </h2>
-          <p className="text-xl text-primary-100 mb-8">
+          <p className="text-xl text-pure-white/90 mb-8">
             Get in touch with our expert team for all your paper and board trading needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 hover:bg-gray-100 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+            <Link href="/contact" className="bg-pure-white text-deep-indigo hover:bg-cool-gray font-medium py-3 px-8 rounded-lg transition-colors duration-200">
               Contact Sales Team
             </Link>
-            <Link href="/products" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+            <Link href="/products" className="border-2 border-pure-white text-pure-white hover:bg-pure-white hover:text-deep-indigo font-medium py-3 px-8 rounded-lg transition-colors duration-200">
               View Products
             </Link>
           </div>

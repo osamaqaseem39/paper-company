@@ -1,33 +1,62 @@
-import { Award, Users, Globe, Truck, Shield, CheckCircle } from 'lucide-react'
+import { Award, Users, Globe, Truck, Shield, CheckCircle, Building, FileText, Phone, Mail, MapPin } from 'lucide-react'
 
 export default function AboutPage() {
   const stats = [
-    { number: '30+', label: 'Years Experience', icon: Award },
+    { number: '40+', label: 'Years Experience', icon: Award },
     { number: '1000+', label: 'Happy Customers', icon: Users },
-    { number: '50+', label: 'Cities Covered', icon: Globe },
-    { number: '24/7', label: 'Customer Support', icon: Shield }
+    { number: '20+', label: 'International Partners', icon: Globe },
+    { number: '4', label: 'Business Divisions', icon: Building }
   ]
 
   const values = [
     {
       icon: CheckCircle,
-      title: 'Quality Assurance',
-      description: 'We maintain the highest standards of quality for all HP Papers products'
+      title: 'Honesty',
+      description: 'Our firm commitment that sets no limits to our success'
     },
     {
       icon: Shield,
-      title: 'Trust & Reliability',
-      description: 'Building long-term relationships based on trust and consistent delivery'
+      title: 'Sustainable Management',
+      description: 'Growing and progressing while maintaining long-term success'
     },
     {
       icon: Users,
-      title: 'Customer Focus',
-      description: 'Putting our customers first with personalized service and support'
+      title: 'Excellent Services',
+      description: 'Enhancing customer satisfaction through superior quality'
     },
     {
-      icon: Truck,
-      title: 'Efficient Delivery',
-      description: 'Fast and reliable delivery across Pakistan with our logistics network'
+      icon: Globe,
+      title: 'Openness & Respect',
+      description: 'Managing with mutual respect to gain public trust'
+    }
+  ]
+
+  const divisions = [
+    {
+      icon: Building,
+      title: 'Division 1: Trading',
+      description: 'Trading of various types of paper and board serving printers and packaging firms',
+      products: ['Coated paper', 'Coated duplex board', 'Coated art paper', 'Coated art card', 'Kraft paper', 'White wood free offset paper', 'Printing paper', 'Ledger paper', 'Colored bond paper', 'Ivory board', 'Sticker paper', 'Bleach board'],
+      head: 'Mr. Zahid Hussain, C.E.O'
+    },
+    {
+      icon: Globe,
+      title: 'Division 2: Indenting',
+      description: 'Indenting house representing various mills and export houses from around the world',
+      countries: ['Japan', 'Korea', 'China', 'Indonesia', 'United States', 'European countries'],
+      head: 'Mr. Bilal Zahid, Executive Officer'
+    },
+    {
+      icon: FileText,
+      title: 'Division 3: Government Supplies',
+      description: 'Supplies to various government institutions and private sector companies',
+      head: 'Mr. Abbas Khurshid, Director'
+    },
+    {
+      icon: Award,
+      title: 'Division 4: HP Papers',
+      description: 'Dealing exclusively in cut size paper business under the brand of HP Papers from Brazil',
+      head: 'Mr. Harris Zahid, Director'
     }
   ]
 
@@ -37,12 +66,13 @@ export default function AboutPage() {
       <section className="bg-gradient-to-br from-primary-50 to-blue-50 section-padding">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            About HP Papers
-            <span className="block text-primary-600">Pakistan</span>
+            About Trade
+            <span className="block text-primary-600">International</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We are the official sole distributor of HP Papers in Pakistan, committed to providing 
-            premium quality paper products and exceptional service to businesses and individuals across the country.
+            Trade International was established in Lahore, Pakistan in 1990 for dealing exclusively in 
+            paper and paper board. We are importers, indentors and stockists of all sorts of paper and board, 
+            serving various printers and packaging firms across Pakistan.
           </p>
         </div>
       </section>
@@ -57,29 +87,31 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  HP Papers Pakistan was established with a vision to bring the world's finest paper products 
-                  to the Pakistani market. As the official sole distributor of HP Papers, we have been serving 
-                  businesses, educational institutions, and individuals since our inception.
+                  Trade International was established in Lahore, Pakistan in 1990 for dealing exclusively in 
+                  paper and paper board. The founder of the firm Mr. Zahid Hussain was associated with this 
+                  trade since 1974 in succession to a family concern established solely in paper business in 
+                  1952 in Karachi.
                 </p>
                 <p>
-                  Our journey began with a simple mission: to provide premium quality paper products that meet 
-                  the highest international standards while ensuring accessibility and affordability for our customers.
+                  Over the years Trade International has evolved into a giant in paper industry of Pakistan and 
+                  with the help of Almighty ALLAH, has now expanded its business into other lines of trade 
+                  which includes construction in private and public sectors.
                 </p>
                 <p>
-                  Today, we are proud to be the trusted partner for thousands of customers across Pakistan, 
-                  offering a comprehensive range of HP Papers products backed by exceptional service and support.
+                  Trade International enjoys very good reputation not only in Pakistan but also has a good name 
+                  with various suppliers all over the world.
                 </p>
               </div>
             </div>
             <div className="bg-gray-100 rounded-2xl p-8">
               <div className="text-center">
                 <div className="w-32 h-32 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-4xl">HP</span>
+                  <Building className="h-16 w-16 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Official Partnership</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Since 1990</h3>
                 <p className="text-gray-600">
-                  We maintain a direct partnership with HP Papers, ensuring authentic products 
-                  and the latest innovations reach our customers first.
+                  Three decades of excellence in paper trading and distribution, building trust 
+                  and relationships across Pakistan and the world.
                 </p>
               </div>
             </div>
@@ -88,7 +120,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-primary-600">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -107,6 +139,63 @@ export default function AboutPage() {
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
                 <div className="text-primary-100">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Business Divisions Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Business Divisions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Four specialized divisions working together to serve all your paper needs
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {divisions.map((division, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                    <division.icon className="h-8 w-8 text-primary-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">{division.title}</h3>
+                    <p className="text-primary-600 font-medium">{division.head}</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">{division.description}</p>
+                
+                {division.products && (
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Products:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {division.products.map((product, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+                          {product}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {division.countries && (
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Countries:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {division.countries.map((country, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
+                          {country}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -168,45 +257,132 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Team
+              Our Leadership Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Meet the dedicated professionals who make HP Papers Pakistan the trusted choice
+              Meet the experienced professionals who lead Trade International's success
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-32 h-32 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-16 w-16 text-primary-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center bg-gray-50 rounded-2xl p-8">
+              <div className="w-32 h-32 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-16 w-16 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Sales Team</h3>
-              <p className="text-gray-600">
-                Our experienced sales professionals are here to help you find the perfect 
-                paper solution for your needs.
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Zahid Hussain</h3>
+              <p className="text-primary-600 font-medium mb-2">Chief Executive Officer</p>
+              <p className="text-gray-600 text-sm">
+                More than 37 years of experience in paper business. Founded Trade International in 1990 
+                and has built it into a recognized force in Pakistan's paper trade industry.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-32 h-32 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Truck className="h-16 w-16 text-primary-600" />
+            <div className="text-center bg-gray-50 rounded-2xl p-8">
+              <div className="w-32 h-32 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Globe className="h-16 w-16 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Logistics Team</h3>
-              <p className="text-gray-600">
-                Ensuring fast and reliable delivery of your orders across Pakistan with 
-                our efficient logistics network.
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Bilal Zahid</h3>
+              <p className="text-green-600 font-medium mb-2">Director - Indenting Department</p>
+              <p className="text-gray-600 text-sm">
+                Executive Officer of the indenting division, representing various mills and export houses 
+                from Japan, Korea, China, Indonesia, United States and European countries.
               </p>
             </div>
             
-            <div className="text-center">
-              <div className="w-32 h-32 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-16 w-16 text-primary-600" />
+            <div className="text-center bg-gray-50 rounded-2xl p-8">
+              <div className="w-32 h-32 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FileText className="h-16 w-16 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Support Team</h3>
-              <p className="text-gray-600">
-                Providing technical support and assistance to ensure you get the most 
-                out of your HP Papers products.
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Abbas Khurshid</h3>
+              <p className="text-purple-600 font-medium mb-2">Director - Tenders & Office Supply</p>
+              <p className="text-gray-600 text-sm">
+                Leads the team responsible for supplies to various government institutions 
+                and private sector companies across Pakistan.
               </p>
+            </div>
+            
+            <div className="text-center bg-gray-50 rounded-2xl p-8">
+              <div className="w-32 h-32 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-16 w-16 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Harris Zahid</h3>
+              <p className="text-orange-600 font-medium mb-2">Director - HP Papers Department</p>
+              <p className="text-gray-600 text-sm">
+                Leads the HP Papers division, dealing exclusively in cut size paper business 
+                under the brand of HP Papers from Brazil.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section className="section-padding bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Contact Information
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get in touch with our team for any inquiries or support
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Main Office</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <MapPin className="w-6 h-6 text-primary-600 mt-1" />
+                  <div>
+                    <p className="text-gray-900 font-medium">Ganpat Road, Lahore</p>
+                    <p className="text-gray-600">Shah-e-Millat Lahore 54000, Pakistan</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Phone className="w-6 h-6 text-primary-600 mt-1" />
+                  <div>
+                    <p className="text-gray-900 font-medium">Phone Numbers:</p>
+                    <p className="text-gray-600">92-42-37231507, 37224717, 37229093</p>
+                    <p className="text-gray-600">92-42-37232148, 37361619, 37356771, 37321223</p>
+                    <p className="text-gray-600">Fax: 92-42-37321012, 37361620</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Mail className="w-6 h-6 text-primary-600 mt-1" />
+                  <div>
+                    <p className="text-gray-900 font-medium">Email Addresses:</p>
+                    <p className="text-gray-600">info@tradeinternational.net.pk</p>
+                    <p className="text-gray-600">tradeint@wol.net.pk</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Department Contacts</h3>
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-primary-600 mb-2">Import & Trading Department</h4>
+                  <p className="text-gray-700">Chief Executive: Mr. Zahid Hussain</p>
+                  <p className="text-primary-600">Cell: 0300-8476943</p>
+                </div>
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-green-600 mb-2">Indenting Department</h4>
+                  <p className="text-gray-700">Director: Mr. Bilal Zahid</p>
+                  <p className="text-green-600">Cell: 0300-8261142, 0300-9444334</p>
+                </div>
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-purple-600 mb-2">Tenders & Office Supply Department</h4>
+                  <p className="text-gray-700">Director: Mr. Abbas Khurshid</p>
+                  <p className="text-purple-600">Cell: 0300-4310700</p>
+                </div>
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <h4 className="font-bold text-orange-600 mb-2">Office Paper/HP Business Department</h4>
+                  <p className="text-gray-700">Director: Mr. Harris Zahid</p>
+                  <p className="text-orange-600">Cell: 0321-4234007</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

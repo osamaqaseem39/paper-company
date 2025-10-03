@@ -39,9 +39,9 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-deep-indigo shadow-lg sticky top-0 z-50">
       {/* Top Bar */}
-      <div className="bg-primary-600 text-white">
+      <div className="bg-deep-indigo text-pure-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-6 text-sm">
@@ -62,7 +62,7 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 text-pure-white">
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <div className="flex-shrink-0 w-[280px] h-[60px] relative group">
@@ -72,10 +72,9 @@ export default function Header() {
                 alt="Trade International Logo" 
                 width={649} 
                 height={135} 
-                className="object-contain w-full h-full group-hover:scale-105 group-hover:shadow-2xl transform transition-all duration-300 drop-shadow-lg" 
+                className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" 
                 priority 
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
           </div>
 
@@ -87,15 +86,15 @@ export default function Header() {
                 href={item.href}
                 className={`relative group font-semibold text-lg tracking-wide transition-colors duration-200 ${
                   isActive(item.href) 
-                    ? 'text-primary-600' 
-                    : 'text-gray-700 hover:text-primary-600'
+                    ? 'text-electric-blue' 
+                    : 'text-pure-white hover:text-electric-blue'
                 }`}
               >
                 {item.name}
                 {isActive(item.href) && (
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full shadow-sm"></span>
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-electric-blue rounded-full"></span>
                 )}
-                <span className="absolute -inset-2 bg-primary-50 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10"></span>
+                <span className="absolute -inset-2 bg-electric-blue/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 -z-10"></span>
               </Link>
             ))}
             
@@ -105,8 +104,8 @@ export default function Header() {
                 onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 className={`flex items-center space-x-1 font-semibold text-lg tracking-wide transition-colors duration-200 ${
                   isServicesActive() 
-                    ? 'text-primary-600' 
-                    : 'text-gray-700 hover:text-primary-600'
+                    ? 'text-electric-blue' 
+                    : 'text-pure-white hover:text-electric-blue'
                 }`}
               >
                 <span>Services</span>
@@ -114,19 +113,19 @@ export default function Header() {
                   isServicesDropdownOpen ? 'rotate-180' : ''
                 }`} />
                 {isServicesActive() && (
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full shadow-sm"></span>
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-electric-blue rounded-full"></span>
                 )}
               </button>
               
               {/* Dropdown Menu */}
-              <div className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-gray-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
+              <div className={`absolute top-full left-0 mt-2 w-64 bg-pure-white rounded-2xl shadow-2xl border border-cool-gray/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
                 <div className="py-2">
                   {services.map((service) => (
                     <Link
                       key={service.name}
                       href={service.href}
-                      className={`block px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 border border-transparent hover:border-primary-200/50 transform hover:scale-105 hover:shadow-lg transition-all duration-200 ${
-                        isActive(service.href) ? 'text-primary-600 bg-primary-50 border-primary-200/50' : ''
+                      className={`block px-6 py-3 text-charcoal hover:text-electric-blue hover:bg-cool-gray border border-transparent hover:border-electric-blue/30 transform hover:scale-105 transition-all duration-200 ${
+                        isActive(service.href) ? 'text-electric-blue bg-cool-gray border-electric-blue/30' : ''
                       }`}
                     >
                       {service.name}
@@ -141,11 +140,11 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-6">
             <Link
               href="/cart"
-              className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl border border-gray-200/50 hover:border-primary-300/50 transform hover:scale-105 transition-all duration-300 p-4"
+              className="relative bg-pure-white rounded-2xl shadow-xl hover:shadow-2xl border border-cool-gray/50 hover:border-electric-blue/50 transform hover:scale-105 transition-all duration-300 p-4"
             >
-              <ShoppingCart className="h-7 w-7 text-gray-700" />
+              <ShoppingCart className="h-7 w-7 text-charcoal" />
               {getCartCount() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-lg">
+                <span className="absolute -top-2 -right-2 bg-golden-ochre text-pure-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-lg">
                   {getCartCount()}
                 </span>
               )}
@@ -156,12 +155,12 @@ export default function Header() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="transition-all duration-300 p-3 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 border border-gray-200/50 hover:border-primary-300/50 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="transition-all duration-300 p-3 rounded-2xl hover:bg-cool-gray border border-cool-gray/50 hover:border-electric-blue/50 transform hover:scale-105 shadow-lg hover:shadow-xl bg-pure-white text-charcoal"
             >
               {isMobileMenuOpen ? (
-                <X className="h-7 w-7 text-gray-700" />
+                <X className="h-7 w-7 text-charcoal" />
               ) : (
-                <Menu className="h-7 w-7 text-gray-700" />
+                <Menu className="h-7 w-7 text-charcoal" />
               )}
             </button>
           </div>
@@ -170,17 +169,17 @@ export default function Header() {
 
       {/* Mobile Navigation Dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white shadow-2xl border border-gray-200/50 mx-6">
+        <div className="lg:hidden bg-pure-white shadow-2xl border border-cool-gray/50 mx-6">
           <nav className="px-6 pt-4 pb-6 space-y-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block font-semibold py-3 px-4 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 border border-transparent hover:border-primary-200/50 transform hover:scale-105 hover:shadow-lg transition-all duration-200 ${
+                className={`block font-semibold py-3 px-4 rounded-2xl hover:bg-cool-gray border border-transparent hover:border-electric-blue/30 transform hover:scale-105 transition-all duration-200 ${
                   isActive(item.href) 
-                    ? 'text-primary-600 bg-primary-50 border-primary-200/50' 
-                    : 'text-gray-700'
+                    ? 'text-electric-blue bg-cool-gray border-electric-blue/30' 
+                    : 'text-charcoal'
                 }`}
               >
                 {item.name}
@@ -188,17 +187,17 @@ export default function Header() {
             ))}
             
             {/* Mobile Services Section */}
-            <div className="border-t border-gray-200 pt-4">
-              <div className="font-semibold text-gray-900 mb-2 px-4">Services</div>
+            <div className="border-t border-cool-gray pt-4">
+              <div className="font-semibold text-classic-black mb-2 px-4">Services</div>
               {services.map((service) => (
                 <Link
                   key={service.name}
                   href={service.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-semibold py-3 px-8 rounded-2xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-blue-50 border border-transparent hover:border-primary-200/50 transform hover:scale-105 hover:shadow-lg transition-all duration-200 ${
+                  className={`block font-semibold py-3 px-8 rounded-2xl hover:bg-cool-gray border border-transparent hover:border-electric-blue/30 transform hover:scale-105 transition-all duration-200 ${
                     isActive(service.href) 
-                      ? 'text-primary-600 bg-primary-50 border-primary-200/50' 
-                      : 'text-gray-700'
+                      ? 'text-electric-blue bg-cool-gray border-electric-blue/30' 
+                      : 'text-charcoal'
                   }`}
                 >
                   {service.name}
@@ -210,4 +209,4 @@ export default function Header() {
       )}
     </header>
   )
-} 
+}

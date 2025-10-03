@@ -1,0 +1,119 @@
+/* 
+ * Trade International Color Palette Implementation
+ * 
+ * This file documents the color palette usage across the website
+ * Following the professional color palette guidelines provided
+ * 
+ * NO GRADIENTS - Clean, professional solid colors only
+ */
+
+/* 
+ * BACKGROUND & LAYOUT COLORS
+ * These colors form the foundation of your pages
+ */
+
+/* Primary Background - White (#FFFFFF) */
+.bg-primary-bg {
+  background-color: #FFFFFF;
+}
+
+/* Secondary Background - Cool Gray (#EAEAEA) */
+.bg-cool-gray {
+  background-color: #EAEAEA;
+}
+
+/* Pure White (#FFFFFF) - For elements that need to "pop" */
+.bg-pure-white {
+  background-color: #FFFFFF;
+}
+
+/* 
+ * TEXT & TYPOGRAPHY COLORS
+ * Optimized for readability
+ */
+
+/* Main Body Text - Charcoal (#333333) */
+.text-charcoal {
+  color: #333333;
+}
+
+/* Headlines - Classic Black (#000000) */
+.text-classic-black {
+  color: #000000;
+}
+
+/* Subheadings - Deep Indigo (#0B2A6C) */
+.text-deep-indigo {
+  color: #0B2A6C;
+}
+
+/* 
+ * BRANDING & STRUCTURAL COLORS
+ * Represent your brand identity
+ */
+
+/* Primary Branding Color - Deep Indigo (#0B2A6C) */
+.bg-deep-indigo {
+  background-color: #0B2A6C;
+}
+
+/* Primary Accent Color - Electric Blue (#00B0F0) */
+.text-electric-blue {
+  color: #00B0F0;
+}
+
+.bg-electric-blue {
+  background-color: #00B0F0;
+}
+
+/* 
+ * CALL-TO-ACTION & NOTIFICATION COLORS
+ * For encouraging user action and providing feedback
+ */
+
+/* Primary CTA Color - Golden Ochre (#D4A017) */
+.bg-golden-ochre {
+  background-color: #D4A017;
+}
+
+.text-golden-ochre {
+  color: #D4A017;
+}
+
+/* Success Messages - Green (#28a745) */
+.text-success-green {
+  color: #28a745;
+}
+
+.bg-success-green {
+  background-color: #28a745;
+}
+
+/* Error Messages - Red (#dc3545) */
+.text-error-red {
+  color: #dc3545;
+}
+
+.bg-error-red {
+  background-color: #dc3545;
+}
+
+/* Warning Messages - Yellow/Amber (#ffc107) */
+.text-warning-yellow {
+  color: #ffc107;
+}
+
+.bg-warning-yellow {
+  background-color: #ffc107;
+}
+
+/* 
+ * Usage Guide (Solid colors only):
+ * Header & Footer: Deep Indigo background with Pure White text
+ * Main Content: White background, Classic Black H1/H2, Deep Indigo H3/H4, Charcoal body
+ * Feature Sections: Cool Gray background
+ * Links: Electric Blue
+ * CTAs: Golden Ochre background with White text; hover via slight brightness/shadow
+ * Secondary Buttons: Transparent bg with Electric Blue border/text; hover fills Electric Blue with White text
+ * Tertiary Buttons: Charcoal text on Cool Gray backgrounds
+ */

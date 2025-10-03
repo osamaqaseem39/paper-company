@@ -384,7 +384,7 @@ export default function TenderPage() {
       </section>
 
       {/* Success Metrics Section */}
-      <section className="section-padding bg-primary-600">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -469,7 +469,7 @@ export default function TenderPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-primary-600">
+      <section className="section-padding bg-deep-indigo">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Partner with Trade International?
