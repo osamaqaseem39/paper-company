@@ -1,6 +1,6 @@
 import { Product, ApiResponse } from '../types/product.types'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://paper-company-server.vercel.app/api'
 
 export const productService = {
   async getFeaturedProducts(limit: number = 6): Promise<ApiResponse<{ products: Product[] }>> {

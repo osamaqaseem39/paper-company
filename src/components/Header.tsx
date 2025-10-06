@@ -15,6 +15,7 @@ export default function Header() {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'Brands', href: '/brands' },
     { name: 'Products', href: '/products' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
@@ -39,9 +40,9 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-deep-indigo shadow-lg sticky top-0 z-50">
+    <header className="bg-pure-white shadow-lg sticky top-0 z-50">
       {/* Top Bar */}
-      <div className="bg-deep-indigo text-pure-white">
+      <div className="bg-pure-white text-charcoal">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-6 text-sm">
@@ -62,7 +63,7 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-6 text-pure-white">
+      <div className="max-w-7xl mx-auto px-6 text-charcoal">
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
           <div className="flex-shrink-0 w-[280px] h-[60px] relative group">
@@ -87,7 +88,7 @@ export default function Header() {
                 className={`relative group font-semibold text-lg tracking-wide transition-colors duration-200 ${
                   isActive(item.href) 
                     ? 'text-electric-blue' 
-                    : 'text-pure-white hover:text-electric-blue'
+                    : 'text-charcoal hover:text-electric-blue'
                 }`}
               >
                 {item.name}
@@ -105,7 +106,7 @@ export default function Header() {
                 className={`flex items-center space-x-1 font-semibold text-lg tracking-wide transition-colors duration-200 ${
                   isServicesActive() 
                     ? 'text-electric-blue' 
-                    : 'text-pure-white hover:text-electric-blue'
+                    : 'text-charcoal hover:text-electric-blue'
                 }`}
               >
                 <span>Services</span>

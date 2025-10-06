@@ -1,5 +1,5 @@
 // Checkout Service for Website
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://paper-company-server.vercel.app/api';
 
 export interface CheckoutData {
   // Order Information

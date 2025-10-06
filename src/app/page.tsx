@@ -3,6 +3,8 @@ import { CheckCircle, Star, Truck, Shield, Award, Users, Globe, Clock, Building,
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import FeaturedProducts from '../components/FeaturedProducts'
+import { brandService } from '@/services/brandService'
+import BrandsGrid from '@/components/BrandsGrid'
 
 export const metadata: Metadata = {
   title: 'Trade International - Paper Trading Company Pakistan | HP Papers Distributor',
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Home() {
+export default async function Home() {
   const features = [
     {
       icon: Award,
@@ -104,6 +106,9 @@ export default function Home() {
       description: 'Managing with mutual respect to gain public trust'
     }
   ]
+
+  const brandsRes = await brandService.getActiveBrands(12, 1)
+  const brands = brandsRes.success ? brandsRes.data?.brands ?? [] : []
 
   return (
     <div className="min-h-screen bg-pure-white">
@@ -189,6 +194,37 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Brands Section */}
+      <section className="section-padding bg-pure-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm font-medium mb-6">
+              <Award className="w-4 h-4 mr-2" />
+              Our Brands
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-classic-black mb-4">
+              Trusted <span className="text-electric-blue">Partners</span>
+            </h2>
+            <p className="text-xl text-charcoal max-w-3xl mx-auto">
+              We collaborate with top international brands to ensure premium quality products.
+            </p>
+          </div>
+
+          {brands.length > 0 ? (
+            <BrandsGrid brands={brands} />
+          ) : (
+            <div className="text-center text-charcoal">Brands will appear here soon.</div>
+          )}
+
+          <div className="text-center mt-8">
+            <Link href="/brands" className="inline-flex items-center px-6 py-3 border-2 border-deep-indigo text-deep-indigo font-bold rounded-2xl hover:border-electric-blue hover:text-electric-blue transition-all duration-300">
+              View All Brands
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
