@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock, Users, Building, Send, MessageCircle, Globe, Award } from 'lucide-react'
@@ -10,6 +13,16 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  const [productInquiry, setProductInquiry] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Check for product parameter in URL
+    const urlParams = new URLSearchParams(window.location.search)
+    const product = urlParams.get('product')
+    if (product) {
+      setProductInquiry(product)
+    }
+  }, [])
   const departments = [
     {
       name: 'Import & Trading Department',
@@ -94,6 +107,16 @@ export default function ContactPage() {
             Get in touch with Trade International for all your paper trading, indenting, tender, and HP Paper needs. 
             Our expert team is ready to assist you across Pakistan.
           </p>
+          {productInquiry && (
+            <div className="mt-6 bg-electric-blue/20 backdrop-blur-sm rounded-2xl p-6 border border-electric-blue/30">
+              <p className="text-lg text-pure-white font-semibold">
+                Inquiring about: <span className="text-golden-ochre">{productInquiry}</span>
+              </p>
+              <p className="text-pure-white/80 mt-2">
+                Our team will provide detailed information and pricing for this product.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -238,6 +261,7 @@ export default function ContactPage() {
                   type="text"
                   id="subject"
                   name="subject"
+                  defaultValue={productInquiry ? `Inquiry about ${productInquiry}` : ''}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                   placeholder="What is this regarding?"
                 />
@@ -251,6 +275,7 @@ export default function ContactPage() {
                   id="message"
                   name="message"
                   rows={5}
+                  defaultValue={productInquiry ? `I am interested in learning more about ${productInquiry}. Please provide detailed information including pricing, specifications, and availability.` : ''}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell us how we can help you..."
                 ></textarea>

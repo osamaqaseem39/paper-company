@@ -1,27 +1,27 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Star, Eye } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { productService } from '../services/productService'
-import { Product } from '../types/product.types'
+import { Star, Eye, Phone, Mail } from 'lucide-react'
+import { productService } from '../../services/productService'
+import { Product } from '../../types/product.types'
 
-export default function FeaturedProducts() {
+export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetchFeaturedProducts()
+    fetchProducts()
   }, [])
 
-  const fetchFeaturedProducts = async () => {
+  const fetchProducts = async () => {
     try {
       setLoading(true)
       setError(null)
 
-      const response = await productService.getFeaturedProducts(6)
+      const response = await productService.getFeaturedProducts(12)
       
       if (response.success && response.data) {
         setProducts(response.data.products)
@@ -117,12 +117,42 @@ export default function FeaturedProducts() {
             salesCount: 0,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
+          },
+          {
+            _id: '4',
+            name: 'HP Premium Paper',
+            slug: 'hp-premium-paper',
+            description: 'Ultra-premium paper for high-quality printing and presentations',
+            shortDescription: 'Ultra-premium paper for presentations',
+            sku: 'HP-PP-100',
+            price: 1500,
+            salePrice: 1350,
+            stock: 40,
+            minStock: 10,
+            images: [],
+            category: 'premium',
+            brand: 'hp',
+            tags: ['premium', 'presentation'],
+            attributes: [],
+            variations: [],
+            seo: {},
+            status: 'published',
+            isActive: true,
+            isFeatured: true,
+            isDigital: false,
+            reviews: [],
+            rating: 4.9,
+            reviewCount: 203,
+            viewCount: 0,
+            salesCount: 0,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
           }
         ])
       }
     } catch (err) {
-      console.error('Error fetching featured products:', err)
-      setError('Failed to load featured products')
+      console.error('Error fetching products:', err)
+      setError('Failed to load products')
     } finally {
       setLoading(false)
     }
@@ -141,46 +171,81 @@ export default function FeaturedProducts() {
     return Math.round(((price - salePrice) / price) * 100)
   }
 
-  const viewProduct = (product: Product) => {
-    // Navigate to product details or contact page
+  const contactForProduct = (product: Product) => {
     window.location.href = `/contact?product=${encodeURIComponent(product.name)}`
   }
 
   if (loading) {
     return (
-      <div className="text-center py-12">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-electric-blue mx-auto mb-4"></div>
-        <p className="text-charcoal">Loading featured products...</p>
+      <div className="min-h-screen bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-electric-blue mx-auto mb-4"></div>
+            <p className="text-charcoal text-lg">Loading products...</p>
+          </div>
+        </div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="text-center py-12">
-        <p className="text-error-red mb-4">{error}</p>
-        <button
-          onClick={fetchFeaturedProducts}
-          className="bg-electric-blue text-pure-white px-4 py-2 rounded-lg hover:bg-deep-indigo"
-        >
-          Try Again
-        </button>
+      <div className="min-h-screen bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <p className="text-error-red mb-4 text-lg">{error}</p>
+            <button
+              onClick={fetchProducts}
+              className="bg-electric-blue text-pure-white px-6 py-3 rounded-lg hover:bg-deep-indigo"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="space-y-8">
-      {/* Products Carousel */}
-      <div className="relative">
-        {/* Carousel Container */}
-        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide">
+    <div className="min-h-screen bg-gray-50">
+      {/* Header Section */}
+      <div className="bg-pure-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-classic-black mb-4">
+              HP Paper Products
+            </h1>
+            <p className="text-xl text-charcoal mb-8 max-w-3xl mx-auto">
+              Discover our comprehensive range of HP paper products. Contact us for pricing and availability.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact" 
+                className="bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                Get Quote
+              </Link>
+              <Link 
+                href="tel:+92-42-37231507" 
+                className="bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <Phone className="h-5 w-5" />
+                <span>Call Now</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Products Grid */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {products.map((product) => {
             const discountPercentage = getDiscountPercentage(product.price, product.salePrice)
             const displayPrice = product.salePrice || product.price
             
             return (
-              <div key={product._id} className="flex-shrink-0 w-80 group">
+              <div key={product._id} className="group">
                 <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden">
                   {/* Product Image */}
                   <div className="relative bg-cool-gray h-64 overflow-hidden">
@@ -216,7 +281,7 @@ export default function FeaturedProducts() {
 
                   {/* Product Content */}
                   <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-classic-black mb-4 group-hover:text-electric-blue transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-classic-black mb-3 group-hover:text-electric-blue transition-colors duration-300">
                       {product.name}
                     </h3>
                     
@@ -237,25 +302,20 @@ export default function FeaturedProducts() {
                       <span className="text-xs text-cool-gray">({product.reviewCount})</span>
                     </div>
                     
-                    <div className="flex items-center justify-center space-x-2 mb-4">
-                      <button
-                        onClick={() => viewProduct(product)}
-                        className="flex-1 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
-                      >
-                        <Eye className="h-4 w-4" />
-                        <span>Get Quote</span>
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => contactForProduct(product)}
+                      className="w-full bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 mb-3"
+                    >
+                      <Eye className="h-4 w-4" />
+                      <span>Get Quote</span>
+                    </button>
                     
-                    {/* Contact Button */}
                     <Link 
                       href={`/contact?product=${encodeURIComponent(product.name)}`}
-                      className="inline-flex items-center justify-center w-full bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 space-x-2"
+                      className="inline-flex items-center justify-center w-full bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 space-x-2"
                     >
+                      <Mail className="h-4 w-4" />
                       <span>Contact for Details</span>
-                      <div className="w-5 h-5 bg-pure-white/20 rounded-full flex items-center justify-center">
-                        <div className="w-2 h-2 bg-pure-white rounded-full"></div>
-                      </div>
                     </Link>
                   </div>
                 </div>
@@ -263,24 +323,31 @@ export default function FeaturedProducts() {
             )
           })}
         </div>
-
-        {/* Carousel Navigation Dots */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              className="w-3 h-3 bg-cool-gray rounded-full hover:bg-electric-blue transition-colors duration-300 focus:outline-none"
-              aria-label={`Go to slide ${index + 1}`}
-            ></button>
-          ))}
-        </div>
       </div>
-      
-      {/* Contact for Products Button */}
-      <div className="text-center mt-12">
-        <Link href="/contact" className="btn-secondary">
-          Contact for All Products
-        </Link>
+
+      {/* Contact CTA Section */}
+      <div className="bg-deep-indigo text-pure-white py-16">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need Custom Solutions?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Contact our team for bulk orders, custom specifications, and specialized paper requirements.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact" 
+              className="bg-electric-blue hover:bg-electric-blue/90 text-pure-white font-semibold py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              Contact Us
+            </Link>
+            <Link 
+              href="tel:+92-42-37231507" 
+              className="bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+            >
+              <Phone className="h-5 w-5" />
+              <span>+92-42-37231507</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

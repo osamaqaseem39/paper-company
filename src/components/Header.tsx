@@ -3,20 +3,19 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, ShoppingCart, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { useCart } from '@/contexts/CartContext'
+// import { useCart } from '@/contexts/CartContext' // Disabled for static website
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const pathname = usePathname()
-  const { getCartCount } = useCart()
+  // const { getCartCount } = useCart() // Disabled for static website
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Brands', href: '/brands' },
-    { name: 'Products', href: '/products' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ]
@@ -137,18 +136,13 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* CTA and Cart */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-6">
             <Link
-              href="/cart"
-              className="relative bg-pure-white rounded-2xl shadow-xl hover:shadow-2xl border border-cool-gray/50 hover:border-electric-blue/50 transform hover:scale-105 transition-all duration-300 p-4"
+              href="/contact"
+              className="bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              <ShoppingCart className="h-7 w-7 text-charcoal" />
-              {getCartCount() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-golden-ochre text-pure-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-lg">
-                  {getCartCount()}
-                </span>
-              )}
+              Get Quote
             </Link>
           </div>
 

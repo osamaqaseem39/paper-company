@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { CartProvider } from '@/contexts/CartContext'
+// import { CartProvider } from '@/contexts/CartContext' // Disabled for static website
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import '@/styles/globals.css'
@@ -57,11 +57,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-jost text-charcoal antialiased bg-pure-white">
-        <CartProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

@@ -266,9 +266,6 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center bg-gray-50 rounded-2xl p-8">
-              <div className="w-32 h-32 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-16 w-16 text-white" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Zahid Hussain</h3>
               <p className="text-primary-600 font-medium mb-2">Chief Executive Officer</p>
               <p className="text-gray-600 text-sm">
@@ -278,9 +275,6 @@ export default function AboutPage() {
             </div>
             
             <div className="text-center bg-gray-50 rounded-2xl p-8">
-              <div className="w-32 h-32 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="h-16 w-16 text-white" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Bilal Zahid</h3>
               <p className="text-green-600 font-medium mb-2">Director - Indenting Department</p>
               <p className="text-gray-600 text-sm">
@@ -290,9 +284,6 @@ export default function AboutPage() {
             </div>
             
             <div className="text-center bg-gray-50 rounded-2xl p-8">
-              <div className="w-32 h-32 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileText className="h-16 w-16 text-white" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Abbas Khurshid</h3>
               <p className="text-purple-600 font-medium mb-2">Director - Tenders & Office Supply</p>
               <p className="text-gray-600 text-sm">
@@ -302,9 +293,6 @@ export default function AboutPage() {
             </div>
             
             <div className="text-center bg-gray-50 rounded-2xl p-8">
-              <div className="w-32 h-32 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-16 w-16 text-white" />
-              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Harris Zahid</h3>
               <p className="text-orange-600 font-medium mb-2">Director - HP Papers Department</p>
               <p className="text-gray-600 text-sm">
