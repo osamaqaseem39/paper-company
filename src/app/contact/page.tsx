@@ -23,7 +23,7 @@ export default function ContactPage() {
       phone: '0300-8476943',
       description: 'Handles all import operations and trading activities',
       icon: Globe,
-      color: 'text-blue-600'
+      color: 'text-electric-blue'
     },
     {
       name: 'Tenders & Office Supply Department',
@@ -31,7 +31,7 @@ export default function ContactPage() {
       phone: '0300-4310700',
       description: 'Manages government and private sector tenders',
       icon: Award,
-      color: 'text-green-600'
+      color: 'text-success-green'
     },
     {
       name: 'Indenting Department',
@@ -39,7 +39,7 @@ export default function ContactPage() {
       phone: '0300-8261142, 0300-9444334',
       description: 'Represents international paper companies',
       icon: Users,
-      color: 'text-purple-600'
+      color: 'text-deep-indigo'
     },
     {
       name: 'Office Paper/HP Business Department',
@@ -47,7 +47,7 @@ export default function ContactPage() {
       phone: '0321-4234007',
       description: 'Specialized in HP Paper products and office supplies',
       icon: Building,
-      color: 'text-orange-600'
+      color: 'text-golden-ochre'
     }
   ]
 
@@ -64,7 +64,7 @@ export default function ContactPage() {
         '+92-42-37356771',
         '+92-42-37321223'
       ],
-      color: 'text-blue-600'
+      color: 'text-electric-blue'
     },
     {
       icon: Mail,
@@ -75,7 +75,7 @@ export default function ContactPage() {
         'tradeint@ovi.com',
         'info@hp-paper.com.pk'
       ],
-      color: 'text-green-600'
+      color: 'text-success-green'
     },
     {
       icon: Building,
@@ -84,7 +84,7 @@ export default function ContactPage() {
         '+92-42-37321012',
         '+92-42-37361620'
       ],
-      color: 'text-purple-600'
+      color: 'text-deep-indigo'
     }
   ]
 

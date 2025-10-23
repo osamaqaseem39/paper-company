@@ -63,11 +63,11 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 section-padding">
+      <section className="bg-gradient-to-br from-cool-gray to-gray-100 section-padding">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             About Trade
-            <span className="block text-primary-600">International</span>
+            <span className="block text-electric-blue">International</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Trade International was established in Lahore, Pakistan in 1990 for dealing exclusively in 
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </div>
             <div className="bg-gray-100 rounded-2xl p-8">
               <div className="text-center">
-                <div className="w-32 h-32 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-32 h-32 bg-electric-blue rounded-full flex items-center justify-center mx-auto mb-6">
                   <Building className="h-16 w-16 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Since 1990</h3>
@@ -126,7 +126,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Our Impact in Numbers
             </h2>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
+            <p className="text-xl text-pure-white/80 max-w-3xl mx-auto">
               We're proud of what we've achieved and continue to grow our presence across Pakistan
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   <stat.icon className="h-10 w-10 text-white" />
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-primary-100">{stat.label}</div>
+                <div className="text-pure-white/80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -161,12 +161,12 @@ export default function AboutPage() {
             {divisions.map((division, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
-                    <division.icon className="h-8 w-8 text-primary-600" />
+                  <div className="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mr-4">
+                    <division.icon className="h-8 w-8 text-electric-blue" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900">{division.title}</h3>
-                    <p className="text-primary-600 font-medium">{division.head}</p>
+                    <p className="text-electric-blue font-medium">{division.head}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">{division.description}</p>
@@ -176,7 +176,7 @@ export default function AboutPage() {
                     <h4 className="font-semibold text-gray-900 mb-2">Products:</h4>
                     <div className="flex flex-wrap gap-2">
                       {division.products.map((product, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
+                        <span key={idx} className="px-3 py-1 bg-electric-blue/10 text-electric-blue rounded-full text-sm">
                           {product}
                         </span>
                       ))}
@@ -217,8 +217,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="h-8 w-8 text-primary-600" />
+                <div className="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="h-8 w-8 text-electric-blue" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
@@ -267,7 +267,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center bg-gray-50 rounded-2xl p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Mr. Zahid Hussain</h3>
-              <p className="text-primary-600 font-medium mb-2">Chief Executive Officer</p>
+              <p className="text-electric-blue font-medium mb-2">Chief Executive Officer</p>
               <p className="text-gray-600 text-sm">
                 More than 37 years of experience in paper business. Founded Trade International in 1990 
                 and has built it into a recognized force in Pakistan's paper trade industry.
@@ -321,14 +321,14 @@ export default function AboutPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Main Office</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <MapPin className="w-6 h-6 text-primary-600 mt-1" />
+                  <MapPin className="w-6 h-6 text-electric-blue mt-1" />
                   <div>
                     <p className="text-gray-900 font-medium">Ganpat Road, Lahore</p>
                     <p className="text-gray-600">Shah-e-Millat Lahore 54000, Pakistan</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <Phone className="w-6 h-6 text-primary-600 mt-1" />
+                  <Phone className="w-6 h-6 text-electric-blue mt-1" />
                   <div>
                     <p className="text-gray-900 font-medium">Phone Numbers:</p>
                     <p className="text-gray-600">92-42-37231507, 37224717, 37229093</p>
@@ -337,7 +337,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <Mail className="w-6 h-6 text-primary-600 mt-1" />
+                  <Mail className="w-6 h-6 text-electric-blue mt-1" />
                   <div>
                     <p className="text-gray-900 font-medium">Email Addresses:</p>
                     <p className="text-gray-600">info@tradeinternational.net.pk</p>
@@ -351,24 +351,24 @@ export default function AboutPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Department Contacts</h3>
               <div className="space-y-4">
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <h4 className="font-bold text-primary-600 mb-2">Import & Trading Department</h4>
+                  <h4 className="font-bold text-electric-blue mb-2">Import & Trading Department</h4>
                   <p className="text-gray-700">Chief Executive: Mr. Zahid Hussain</p>
-                  <p className="text-primary-600">Cell: 0300-8476943</p>
+                  <p className="text-electric-blue">Cell: 0300-8476943</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <h4 className="font-bold text-green-600 mb-2">Indenting Department</h4>
+                  <h4 className="font-bold text-success-green mb-2">Indenting Department</h4>
                   <p className="text-gray-700">Director: Mr. Bilal Zahid</p>
-                  <p className="text-green-600">Cell: 0300-8261142, 0300-9444334</p>
+                  <p className="text-success-green">Cell: 0300-8261142, 0300-9444334</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <h4 className="font-bold text-purple-600 mb-2">Tenders & Office Supply Department</h4>
+                  <h4 className="font-bold text-deep-indigo mb-2">Tenders & Office Supply Department</h4>
                   <p className="text-gray-700">Director: Mr. Abbas Khurshid</p>
-                  <p className="text-purple-600">Cell: 0300-4310700</p>
+                  <p className="text-deep-indigo">Cell: 0300-4310700</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <h4 className="font-bold text-orange-600 mb-2">Office Paper/HP Business Department</h4>
+                  <h4 className="font-bold text-golden-ochre mb-2">Office Paper/HP Business Department</h4>
                   <p className="text-gray-700">Director: Mr. Harris Zahid</p>
-                  <p className="text-orange-600">Cell: 0321-4234007</p>
+                  <p className="text-golden-ochre">Cell: 0321-4234007</p>
                 </div>
               </div>
             </div>
