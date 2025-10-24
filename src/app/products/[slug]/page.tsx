@@ -186,7 +186,7 @@ export default function ProductDetailPage() {
     }
 
     fetchProduct()
-  }, [params.slug])
+  }, [params.slug, productDatabase])
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-PK', {
@@ -323,12 +323,12 @@ export default function ProductDetailPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-xl font-bold text-classic-black mb-4">Key Features</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {product.attributes.map((attribute, index) => (
+                {product.attributes?.map((attribute, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                     <span className="text-charcoal">{attribute}</span>
                   </div>
-                ))}
+                )) || []}
               </div>
             </div>
 

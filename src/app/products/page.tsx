@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Star, Eye, Phone, Mail, Filter, Search, Grid, List } from 'lucide-react'
@@ -30,7 +30,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     filterProducts()
-  }, [products, searchTerm, selectedCategory])
+  }, [filterProducts])
 
   const fetchProducts = async () => {
     try {
@@ -186,7 +186,7 @@ export default function ProductsPage() {
     }
   }
 
-  const filterProducts = () => {
+  const filterProducts = useCallback(() => {
     let filtered = products
 
     // Filter by category
@@ -199,12 +199,12 @@ export default function ProductsPage() {
       filtered = filtered.filter(product => 
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        product.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       )
     }
 
     setFilteredProducts(filtered)
-  }
+  }, [products, searchTerm, selectedCategory])
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-PK', {
