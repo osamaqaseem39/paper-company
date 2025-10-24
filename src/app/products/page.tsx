@@ -24,14 +24,6 @@ export default function ProductsPage() {
     { value: 'premium', label: 'Premium Paper' }
   ]
 
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
-  useEffect(() => {
-    filterProducts()
-  }, [filterProducts])
-
   const fetchProducts = async () => {
     try {
       setLoading(true)
@@ -222,6 +214,14 @@ export default function ProductsPage() {
   const contactForProduct = (product: Product) => {
     window.location.href = `/contact?product=${encodeURIComponent(product.name)}`
   }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
+
+  useEffect(() => {
+    filterProducts()
+  }, [filterProducts])
 
   if (loading) {
     return (

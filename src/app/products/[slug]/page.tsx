@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ export default function ProductDetailPage() {
   const [error, setError] = useState<string | null>(null)
 
   // Enhanced product data with new descriptions and images
-  const productDatabase: Product[] = [
+  const productDatabase: Product[] = useMemo(() => [
     {
       _id: '1',
       name: 'HP Business Copy Paper Hi White',
@@ -163,7 +163,7 @@ export default function ProductDetailPage() {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     }
-  ]
+  ], [])
 
   useEffect(() => {
     const fetchProduct = () => {
