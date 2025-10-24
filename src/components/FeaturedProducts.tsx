@@ -30,20 +30,22 @@ export default function FeaturedProducts() {
         setProducts([
           {
             _id: '1',
-            name: 'HP Business Copy Paper',
-            slug: 'hp-business-copy-paper',
-            description: 'High-quality copy paper for everyday business use with excellent print quality',
-            shortDescription: 'Premium copy paper for business use',
+            name: 'HP Business Copy Paper Hi White',
+            slug: 'hp-business-copy-paper-hi-white',
+            description: 'A lightweight and economical paper designed primarily for high-volume copying and draft printing within a business environment. The "Hi White" finish provides good contrast for clear, easy-to-read text.',
+            shortDescription: 'Lightweight and economical paper for high-volume copying and draft printing',
             sku: 'HP-BCP-70',
             price: 950,
             salePrice: 850,
             stock: 100,
             minStock: 10,
-            images: [],
+            images: [
+              { url: '/images/HP Business Copy Paper blue.jpg', alt: 'HP Business Copy Paper Hi White' }
+            ],
             category: 'copy-paper',
             brand: 'hp',
-            tags: ['copy-paper', 'business'],
-            attributes: [],
+            tags: ['copy-paper', 'business', 'hi-white', '70gsm'],
+            attributes: ['70gsm', 'Hi White', 'Business Grade', 'High Volume'],
             variations: [],
             seo: {},
             status: 'published',
@@ -60,20 +62,22 @@ export default function FeaturedProducts() {
           },
           {
             _id: '2',
-            name: 'HP Office Paper',
-            slug: 'hp-office-paper',
-            description: 'Premium office paper with superior brightness and smooth finish',
-            shortDescription: 'Premium office paper with superior quality',
+            name: 'HP Office Paper Hi White',
+            slug: 'hp-office-paper-hi-white',
+            description: 'A versatile, standard-weight paper ideal for general office use. Slightly heavier than basic copy paper, it offers better opacity and a more substantial feel for everyday printing tasks.',
+            shortDescription: 'Versatile, standard-weight paper ideal for general office use with superior brightness',
             sku: 'HP-OP-75',
             price: 1020,
             salePrice: 920,
             stock: 80,
             minStock: 10,
-            images: [],
+            images: [
+              { url: '/images/HP Office paper (green).jpg', alt: 'HP Office Paper Hi White' }
+            ],
             category: 'office-paper',
             brand: 'hp',
-            tags: ['office-paper', 'premium'],
-            attributes: [],
+            tags: ['office-paper', 'hi-white', '75gsm', 'versatile'],
+            attributes: ['75gsm', 'Hi White', 'Office Grade', 'Versatile'],
             variations: [],
             seo: {},
             status: 'published',
@@ -90,20 +94,22 @@ export default function FeaturedProducts() {
           },
           {
             _id: '3',
-            name: 'HP Laser Jet Paper',
-            slug: 'hp-laser-jet-paper',
-            description: 'Specialized paper for laser printers with optimal performance',
-            shortDescription: 'Specialized paper for laser printers',
+            name: 'HP LaserJet Paper Hi White',
+            slug: 'hp-laserjet-paper-hi-white',
+            description: 'A heavier, more premium paper specifically optimized for LaserJet printers. The 90gsm weight gives documents a substantial, professional feel and increased opacity.',
+            shortDescription: 'Premium 90gsm paper specifically optimized for LaserJet printers',
             sku: 'HP-LJP-90',
             price: 1200,
             salePrice: 1100,
             stock: 60,
             minStock: 10,
-            images: [],
+            images: [
+              { url: '/images/HP Laserjet paper ( dark green).jpg', alt: 'HP LaserJet Paper Hi White' }
+            ],
             category: 'laser-jet',
             brand: 'hp',
-            tags: ['laser-jet', 'specialized'],
-            attributes: [],
+            tags: ['laser-jet', 'hi-white', '90gsm', 'premium'],
+            attributes: ['90gsm', 'Hi White', 'LaserJet Optimized', 'Premium'],
             variations: [],
             seo: {},
             status: 'published',
@@ -111,8 +117,8 @@ export default function FeaturedProducts() {
             isFeatured: true,
             isDigital: false,
             reviews: [],
-            rating: 4.7,
-            reviewCount: 156,
+            rating: 4.9,
+            reviewCount: 203,
             viewCount: 0,
             salesCount: 0,
             createdAt: new Date().toISOString(),
@@ -238,13 +244,13 @@ export default function FeaturedProducts() {
                     </div>
                     
                     <div className="flex items-center justify-center space-x-2 mb-4">
-                      <button
-                        onClick={() => viewProduct(product)}
+                      <Link
+                        href={`/products/${product.slug}`}
                         className="flex-1 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                       >
                         <Eye className="h-4 w-4" />
-                        <span>Get Quote</span>
-                      </button>
+                        <span>View Details</span>
+                      </Link>
                     </div>
                     
                     {/* Contact Button */}

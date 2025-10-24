@@ -46,20 +46,23 @@ export default function ProductsPage() {
         setProducts([
           {
             _id: '1',
-            name: 'HP Business Copy Paper',
-            slug: 'hp-business-copy-paper',
-            description: 'High-quality copy paper for everyday business use with excellent print quality and smooth finish',
-            shortDescription: 'Premium copy paper for business use',
+            name: 'HP Business Copy Paper Hi White',
+            slug: 'hp-business-copy-paper-hi-white',
+            description: 'A lightweight and economical paper designed primarily for high-volume copying and draft printing within a business environment. The "Hi White" finish provides good contrast for clear, easy-to-read text, making it suitable for internal memos, drafts, and everyday black-and-white copies where paper weight is less critical.',
+            shortDescription: 'Lightweight and economical paper for high-volume copying and draft printing',
             sku: 'HP-BCP-70',
             price: 950,
             salePrice: 850,
             stock: 100,
             minStock: 10,
-            images: [],
+            images: [
+              { url: '/images/HP Business Copy Paper blue.jpg', alt: 'HP Business Copy Paper Hi White' },
+              { url: '/images/HP Business Copy Paper 2 blue.webp', alt: 'HP Business Copy Paper Hi White - Alternative view' }
+            ],
             category: 'copy-paper',
             brand: 'hp',
-            tags: ['copy-paper', 'business'],
-            attributes: [],
+            tags: ['copy-paper', 'business', 'hi-white', '70gsm'],
+            attributes: ['70gsm', 'Hi White', 'Business Grade', 'High Volume'],
             variations: [],
             seo: {},
             status: 'published',
@@ -76,20 +79,23 @@ export default function ProductsPage() {
           },
           {
             _id: '2',
-            name: 'HP Office Paper',
-            slug: 'hp-office-paper',
-            description: 'Premium office paper with superior brightness and smooth finish for professional documents',
-            shortDescription: 'Premium office paper with superior quality',
+            name: 'HP Office Paper Hi White',
+            slug: 'hp-office-paper-hi-white',
+            description: 'A versatile, standard-weight paper ideal for general office use. Slightly heavier than basic copy paper, it offers better opacity and a more substantial feel for everyday printing tasks like emails, reports, faxes, and copies. The "Hi White" surface ensures crisp text and clear black-and-white graphics.',
+            shortDescription: 'Versatile, standard-weight paper ideal for general office use with superior brightness',
             sku: 'HP-OP-75',
             price: 1020,
             salePrice: 920,
             stock: 80,
             minStock: 10,
-            images: [],
+            images: [
+              { url: '/images/HP Office paper (green).jpg', alt: 'HP Office Paper Hi White' },
+              { url: '/images/HP Office paper (green)#.png', alt: 'HP Office Paper Hi White - Alternative view' }
+            ],
             category: 'office-paper',
             brand: 'hp',
-            tags: ['office-paper', 'premium'],
-            attributes: [],
+            tags: ['office-paper', 'hi-white', '75gsm', 'versatile'],
+            attributes: ['75gsm', 'Hi White', 'Office Grade', 'Versatile'],
             variations: [],
             seo: {},
             status: 'published',
@@ -106,20 +112,23 @@ export default function ProductsPage() {
           },
           {
             _id: '3',
-            name: 'HP Laser Jet Paper',
-            slug: 'hp-laser-jet-paper',
-            description: 'Specialized paper for laser printers with optimal performance and crisp text output',
-            shortDescription: 'Specialized paper for laser printers',
-            sku: 'HP-LJP-90',
-            price: 1200,
-            salePrice: 1100,
-            stock: 60,
+            name: 'HP Everyday Paper Hi White',
+            slug: 'hp-everyday-paper-hi-white',
+            description: 'Considered a standard, reliable paper weight, this 80gsm option is perfect for everyday printing needs at home or in the office. It provides a good balance of thickness, opacity (reducing show-through on double-sided prints), and smooth performance in most printers and copiers.',
+            shortDescription: 'Standard, reliable 80gsm paper perfect for everyday printing needs',
+            sku: 'HP-EDP-80',
+            price: 1100,
+            salePrice: 990,
+            stock: 90,
             minStock: 10,
-            images: [],
-            category: 'laser-jet',
+            images: [
+              { url: '/images/HP Everyday paper (orange).webp', alt: 'HP Everyday Paper Hi White' },
+              { url: '/images/HP Everyday paper (orange) 2.jpg', alt: 'HP Everyday Paper Hi White - Alternative view' }
+            ],
+            category: 'everyday-paper',
             brand: 'hp',
-            tags: ['laser-jet', 'specialized'],
-            attributes: [],
+            tags: ['everyday-paper', 'hi-white', '80gsm', 'reliable'],
+            attributes: ['80gsm', 'Hi White', 'Everyday Grade', 'Reliable'],
             variations: [],
             seo: {},
             status: 'published',
@@ -136,20 +145,23 @@ export default function ProductsPage() {
           },
           {
             _id: '4',
-            name: 'HP Premium Paper',
-            slug: 'hp-premium-paper',
-            description: 'Ultra-premium paper for high-quality printing and presentations with exceptional brightness',
-            shortDescription: 'Ultra-premium paper for presentations',
-            sku: 'HP-PP-100',
-            price: 1500,
-            salePrice: 1350,
-            stock: 40,
+            name: 'HP LaserJet Paper Hi White',
+            slug: 'hp-laserjet-paper-hi-white',
+            description: 'A heavier, more premium paper specifically optimized for LaserJet printers. The 90gsm weight gives documents a substantial, professional feel and increased opacity, ideal for double-sided printing, presentations, proposals, and important business documents. Its surface is engineered for excellent toner adhesion.',
+            shortDescription: 'Premium 90gsm paper specifically optimized for LaserJet printers',
+            sku: 'HP-LJP-90',
+            price: 1200,
+            salePrice: 1100,
+            stock: 60,
             minStock: 10,
-            images: [],
-            category: 'premium',
+            images: [
+              { url: '/images/HP Laserjet paper ( dark green).jpg', alt: 'HP LaserJet Paper Hi White' },
+              { url: '/images/HP Laserjet paper ((dark green)).jpg', alt: 'HP LaserJet Paper Hi White - Alternative view' }
+            ],
+            category: 'laser-jet',
             brand: 'hp',
-            tags: ['premium', 'presentation'],
-            attributes: [],
+            tags: ['laser-jet', 'hi-white', '90gsm', 'premium'],
+            attributes: ['90gsm', 'Hi White', 'LaserJet Optimized', 'Premium'],
             variations: [],
             seo: {},
             status: 'published',
@@ -159,66 +171,6 @@ export default function ProductsPage() {
             reviews: [],
             rating: 4.9,
             reviewCount: 203,
-            viewCount: 0,
-            salesCount: 0,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          },
-          {
-            _id: '5',
-            name: 'HP Color Copy Paper',
-            slug: 'hp-color-copy-paper',
-            description: 'High-quality paper specifically designed for color copying with vibrant results',
-            shortDescription: 'Color copy paper for vibrant results',
-            sku: 'HP-CCP-80',
-            price: 1100,
-            salePrice: 990,
-            stock: 70,
-            minStock: 10,
-            images: [],
-            category: 'copy-paper',
-            brand: 'hp',
-            tags: ['copy-paper', 'color'],
-            attributes: [],
-            variations: [],
-            seo: {},
-            status: 'published',
-            isActive: true,
-            isFeatured: true,
-            isDigital: false,
-            reviews: [],
-            rating: 4.6,
-            reviewCount: 98,
-            viewCount: 0,
-            salesCount: 0,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          },
-          {
-            _id: '6',
-            name: 'HP Executive Paper',
-            slug: 'hp-executive-paper',
-            description: 'Executive-grade paper for important documents and business correspondence',
-            shortDescription: 'Executive-grade paper for business',
-            sku: 'HP-EP-85',
-            price: 1300,
-            salePrice: 1170,
-            stock: 50,
-            minStock: 10,
-            images: [],
-            category: 'office-paper',
-            brand: 'hp',
-            tags: ['office-paper', 'executive'],
-            attributes: [],
-            variations: [],
-            seo: {},
-            status: 'published',
-            isActive: true,
-            isFeatured: true,
-            isDigital: false,
-            reviews: [],
-            rating: 4.8,
-            reviewCount: 142,
             viewCount: 0,
             salesCount: 0,
             createdAt: new Date().toISOString(),
@@ -422,27 +374,29 @@ export default function ProductsPage() {
                   <div className={`relative bg-cool-gray overflow-hidden ${
                     viewMode === 'list' ? 'w-64 h-48 flex-shrink-0' : 'h-64'
                   }`}>
-                    <div className="relative h-full flex items-center justify-center">
-                      {product.images && product.images.length > 0 ? (
-                        <Image
-                          src={product.images[0].url}
-                          alt={product.images[0].alt || product.name}
-                          width={200}
-                          height={200}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-24 h-24 mx-auto">
-                          <Image 
-                            src="/images/hplogo.png" 
-                            alt="HP Logo" 
-                            width={96} 
-                            height={96} 
-                            className="w-full h-full object-contain"
+                    <Link href={`/products/${product.slug}`} className="block h-full">
+                      <div className="relative h-full flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                        {product.images && product.images.length > 0 ? (
+                          <Image
+                            src={product.images[0].url}
+                            alt={product.images[0].alt || product.name}
+                            width={200}
+                            height={200}
+                            className="w-full h-full object-cover"
                           />
-                        </div>
-                      )}
-                    </div>
+                        ) : (
+                          <div className="w-24 h-24 mx-auto">
+                            <Image 
+                              src="/images/hplogo.png" 
+                              alt="HP Logo" 
+                              width={96} 
+                              height={96} 
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </Link>
                     
                     {/* Discount Badge */}
                     {discountPercentage > 0 && (
@@ -484,21 +438,21 @@ export default function ProductsPage() {
                     </div>
                     
                     <div className={`flex space-x-2 ${viewMode === 'list' ? 'justify-start' : 'justify-center'}`}>
-                      <button
-                        onClick={() => contactForProduct(product)}
+                      <Link
+                        href={`/products/${product.slug}`}
                         className="flex-1 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                       >
                         <Eye className="h-4 w-4" />
-                        <span>Get Quote</span>
-                      </button>
+                        <span>View Details</span>
+                      </Link>
                       
-                      <Link 
-                        href={`/contact?product=${encodeURIComponent(product.name)}`}
+                      <button
+                        onClick={() => contactForProduct(product)}
                         className="flex-1 bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
                       >
-                        <Mail className="h-4 w-4" />
+                        <Phone className="h-4 w-4" />
                         <span>Contact</span>
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

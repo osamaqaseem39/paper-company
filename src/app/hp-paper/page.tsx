@@ -12,68 +12,72 @@ export const metadata: Metadata = {
 export default function HPPaperPage() {
   const hpPaperProducts = [
     {
-      name: 'HP Business Copy Paper',
-      description: 'Premium quality copy paper for everyday business use',
+      name: 'HP Business Copy Paper Hi White',
+      description: 'A lightweight and economical paper designed primarily for high-volume copying and draft printing within a business environment. The "Hi White" finish provides good contrast for clear, easy-to-read text, making it suitable for internal memos, drafts, and everyday black-and-white copies where paper weight is less critical.',
       features: [
-        'High brightness and opacity',
-        'Smooth surface for crisp printing',
-        'Compatible with all printers',
-        'Ideal for documents and reports',
-        'Professional appearance',
-        'Cost-effective solution'
+        '70gsm lightweight construction',
+        'Hi White finish for excellent contrast',
+        'High-volume copying optimized',
+        'Economical for business use',
+        'Clear, easy-to-read text',
+        'Compatible with all printers'
       ],
       icon: Package,
       color: 'text-blue-600',
       gsm: '70gsm',
-      applications: ['Office printing', 'Document copying', 'Reports', 'Letters', 'Forms', 'General office use']
+      applications: ['High-volume copying', 'Draft printing', 'Internal memos', 'Business documents', 'Everyday copies', 'Cost-effective printing'],
+      image: '/images/HP Business Copy Paper blue.jpg'
     },
     {
-      name: 'HP Office Paper (Hi White)',
-      description: 'Enhanced white paper for premium office applications',
+      name: 'HP Office Paper Hi White',
+      description: 'A versatile, standard-weight paper ideal for general office use. Slightly heavier than basic copy paper, it offers better opacity and a more substantial feel for everyday printing tasks like emails, reports, faxes, and copies. The "Hi White" surface ensures crisp text and clear black-and-white graphics.',
       features: [
-        'Superior brightness (Hi White)',
-        'Excellent print quality',
-        'Professional finish',
-        'Long-lasting performance',
-        'Consistent quality',
-        'Premium office standard'
+        '75gsm standard weight',
+        'Superior opacity and feel',
+        'Hi White surface finish',
+        'Crisp text and graphics',
+        'Laser and inkjet compatible',
+        'Versatile office applications'
       ],
       icon: Star,
       color: 'text-green-600',
       gsm: '75gsm',
-      applications: ['Premium documents', 'Business presentations', 'Marketing materials', 'Executive reports', 'Client communications', 'Professional printing']
+      applications: ['General office use', 'Emails and reports', 'Business presentations', 'Marketing materials', 'Client communications', 'Professional printing'],
+      image: '/images/HP Office paper (green).jpg'
     },
     {
-      name: 'HP Everyday Paper (Hi White)',
-      description: 'Reliable everyday paper for consistent performance',
+      name: 'HP Everyday Paper Hi White',
+      description: 'Considered a standard, reliable paper weight, this 80gsm option is perfect for everyday printing needs at home or in the office. It provides a good balance of thickness, opacity (reducing show-through on double-sided prints), and smooth performance in most printers and copiers.',
       features: [
-        'Consistent quality',
-        'Reliable performance',
-        'Cost-effective',
-        'Wide compatibility',
-        'Smooth printing',
-        'Everyday reliability'
+        '80gsm standard weight',
+        'Excellent opacity for double-sided printing',
+        'Hi White finish for enhanced contrast',
+        'Smooth performance in all printers',
+        'Reliable everyday use',
+        'Perfect for reports and presentations'
       ],
       icon: Target,
       color: 'text-purple-600',
-      gsm: '70gsm',
-      applications: ['Daily printing', 'Internal documents', 'Notes', 'Drafts', 'General office work', 'Routine printing']
+      gsm: '80gsm',
+      applications: ['Everyday printing', 'Double-sided documents', 'Reports and presentations', 'Flyers and color documents', 'Home and office use', 'Reliable performance'],
+      image: '/images/HP Everyday paper (orange).webp'
     },
     {
-      name: 'HP LaserJet Paper (Hi White)',
-      description: 'Specialized paper optimized for laser printers',
+      name: 'HP LaserJet Paper Hi White',
+      description: 'A heavier, more premium paper specifically optimized for LaserJet printers. The 90gsm weight gives documents a substantial, professional feel and increased opacity, ideal for double-sided printing, presentations, proposals, and important business documents. Its surface is engineered for excellent toner adhesion.',
       features: [
-        'Laser printer optimized',
-        'High heat resistance',
-        'Superior print clarity',
-        'Professional finish',
-        'Consistent feeding',
-        'Long-lasting results'
+        '90gsm premium weight',
+        'LaserJet printer optimized',
+        'Excellent toner adhesion',
+        'Professional substantial feel',
+        'Maximum contrast and impact',
+        'Ideal for important documents'
       ],
       icon: Zap,
       color: 'text-orange-600',
       gsm: '90gsm',
-      applications: ['Laser printing', 'High-volume printing', 'Professional documents', 'Reports', 'Presentations', 'Quality printing']
+      applications: ['LaserJet printing', 'Important business documents', 'Presentations and proposals', 'Double-sided printing', 'Professional reports', 'Premium printing'],
+      image: '/images/HP Laserjet paper ( dark green).jpg'
     }
   ]
 
@@ -258,6 +262,19 @@ export default function HPPaperPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {hpPaperProducts.map((product, index) => (
               <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                {/* Product Image */}
+                <div className="mb-6">
+                  <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden mb-4">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
                 <div className="flex items-center mb-6">
                   <div className={`w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mr-4`}>
                     <product.icon className={`h-8 w-8 ${product.color}`} />
