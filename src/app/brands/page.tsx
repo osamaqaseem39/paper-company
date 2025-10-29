@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Award } from 'lucide-react'
 import { brandService } from '@/services/brandService'
 import BrandsGrid from '@/components/BrandsGrid'
+import type { Brand } from '@/types/brand.types'
 
 export const metadata: Metadata = {
   title: 'Our Brands - Trade International',
@@ -11,6 +12,27 @@ export const metadata: Metadata = {
 export default async function BrandsPage() {
   const res = await brandService.getActiveBrands(24, 1)
   const brands = res.success ? res.data?.brands ?? [] : []
+
+  const fallbackBrands: Brand[] = [
+    { _id: 'b-hp', name: 'HP Photo Copy Paper', slug: 'hp-photo-copy-paper', country: 'Brazil' },
+    { _id: 'b-artone', name: 'Art One Paper Co.', slug: 'art-one-paper-co', country: 'Korea' },
+    { _id: 'b-daats', name: 'Daats Paper', slug: 'daats-paper' },
+    { _id: 'b-daeshan', name: 'Daeshan Pulp Industrial Co. LTD', slug: 'daeshan-pulp', country: 'Korea' },
+    { _id: 'b-daio', name: 'Daio Paper Corporation', slug: 'daio-paper', country: 'Japan' },
+    { _id: 'b-eagle', name: 'Eagle', slug: 'eagle' },
+    { _id: 'b-falcon', name: 'Falcon', slug: 'falcon' },
+    { _id: 'b-hokuetsu', name: 'Hokuetsu Kishu Paper', slug: 'hokuetsu-kishu', country: 'Japan' },
+    { _id: 'b-iggesund', name: 'Iggesund Paper Board', slug: 'iggesund-paper-board', country: 'UK' },
+    { _id: 'b-international-paper', name: 'International Paper Company', slug: 'international-paper' },
+    { _id: 'b-kleannara', name: 'Kleannara Co. LTD', slug: 'kleannara', country: 'Korea' },
+    { _id: 'b-moorim', name: 'Moorim Paper Co. LTD', slug: 'moorim-paper', country: 'Korea' },
+    { _id: 'b-nippon', name: 'Nippon Paper Industries (NPI)', slug: 'nippon-paper-industries', country: 'Japan' },
+    { _id: 'b-oji', name: 'OJI Paper Company LTD', slug: 'oji-paper', country: 'Japan' },
+    { _id: 'b-pakset', name: 'Pakset', slug: 'pakset' },
+    { _id: 'b-pinetree', name: 'Pine Tree', slug: 'pine-tree' },
+    { _id: 'b-chenming', name: 'Shandong Chenming Paper Holding Limited', slug: 'shandong-chenming', country: 'China' },
+    { _id: 'b-shanghai-yongtai', name: 'Shanghai Yongtai Adhesive Products Co. LTD', slug: 'shanghai-yongtai-adhesive', country: 'China' },
+  ]
 
   return (
     <div className="min-h-screen bg-pure-white">
@@ -29,10 +51,10 @@ export default async function BrandsPage() {
             </p>
           </div>
 
-          {res.success ? (
+          {brands.length ? (
             <BrandsGrid brands={brands} />
           ) : (
-            <div className="text-center text-charcoal">{res.message || 'Failed to load brands.'}</div>
+            <BrandsGrid brands={fallbackBrands} />
           )}
         </div>
       </section>

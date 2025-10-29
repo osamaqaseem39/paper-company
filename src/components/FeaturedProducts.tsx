@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Star, Eye } from 'lucide-react'
+import { Eye } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { productService } from '../services/productService'
@@ -237,11 +237,6 @@ export default function FeaturedProducts() {
                       )}
                     </div>
                     
-                    <div className="flex items-center justify-center space-x-1 mb-4">
-                      <Star className="h-4 w-4 text-golden-ochre fill-current" />
-                      <span className="text-sm text-charcoal">{product.rating.toFixed(1)}</span>
-                      <span className="text-xs text-cool-gray">({product.reviewCount})</span>
-                    </div>
                     
                     <div className="flex items-center justify-center space-x-2 mb-4">
                       <Link

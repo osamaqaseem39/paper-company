@@ -13,7 +13,7 @@ export const brandService = {
         return { success: false, message: err?.message || 'Failed to fetch brands' }
       }
       const json = await res.json()
-      const brands: Brand[] = json?.data ?? []
+      const brands: Brand[] = (json?.data ?? []).map(enrichBrandWithLocalLogo)
       return {
         success: true,
         data: { brands },
@@ -34,6 +34,58 @@ async function safeJson(res: Response): Promise<any | undefined> {
   } catch {
     return undefined
   }
+}
+
+function normalizeKey(value?: string): string | undefined {
+  if (!value) return undefined
+  return value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^a-z0-9]+/g, '')
+    .trim()
+}
+
+// Maps normalized brand names/slugs to local logo image paths in /public/images
+const BRAND_LOGO_MAP: Record<string, string> = {
+  // Hewlett-Packard / HP
+  hp: '/images/hp logo.png',
+  hewlettpackard: '/images/hp logo.png',
+  // International Paper
+  internationalpaper: '/images/international paper (black).jpg',
+  // Sappi
+  sappi: '/images/SAPPI.jpg',
+  // Nippon Paper Industries
+  nipponpaper: '/images/NIPPON PAPER INDUS.jpg',
+  nipponpaperindustries: '/images/NIPPON PAPER INDUS.jpg',
+  // Oji Paper
+  ojipaper: '/images/OJI PAPER.jpg',
+  oji: '/images/OJI PAPER.jpg',
+  // Daio Paper Corporation
+  daiopaper: '/images/DAIO PAPER CORPORAITON.jpg',
+  daiopapercorporation: '/images/DAIO PAPER CORPORAITON.jpg',
+  // Moorim
+  moorim: '/images/MOORIM LOGO.jpg',
+  // Kruger Products
+  krugerproducts: '/images/KRUGER PRODUCTS.jpg',
+  kruger: '/images/KRUGER PRODUCTS.jpg',
+  // Chenming Paper
+  chenming: '/images/Chenmingpaper.png',
+  chenmingpaper: '/images/Chenmingpaper.png',
+  // Iggesund / Holmen
+  iggesund: '/images/iggesund paperboard.jpg',
+  iggesundholmen: '/images/IGGESUND HOLMEN GRP.jpg',
+  holmen: '/images/IGGESUND HOLMEN GRP.jpg',
+  // Artone
+  artone: '/images/ARTONE LOGO.jpg',
+}
+
+function enrichBrandWithLocalLogo(brand: Brand): Brand {
+  if (brand.logo) return brand
+  const bySlug = normalizeKey(brand.slug)
+  const byName = normalizeKey(brand.name)
+  const mapped = (bySlug && BRAND_LOGO_MAP[bySlug]) || (byName && BRAND_LOGO_MAP[byName])
+  if (!mapped) return brand
+  return { ...brand, logo: mapped }
 }
 
 
