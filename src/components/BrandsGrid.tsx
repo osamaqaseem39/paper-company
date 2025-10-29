@@ -13,7 +13,7 @@ export default function BrandsGrid({ brands }: BrandsGridProps) {
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
       {brands.map((brand) => (
         <div key={brand._id} className="group bg-pure-white rounded-2xl p-4 border border-cool-gray/50 shadow hover:shadow-lg transition-all duration-300">
-          <div className="aspect-square relative rounded-xl overflow-hidden bg-cool-gray/50 flex items-center justify-center">
+          <div className="aspect-square relative rounded-xl overflow-hidden bg-pure-white flex items-center justify-center">
             {brand.logo ? (
               <Image
                 src={brand.logo}

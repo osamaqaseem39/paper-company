@@ -495,19 +495,6 @@ export default function ProductDetailPage() {
     fetchProduct()
   }, [params.slug, productDatabase])
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PK', {
-      style: 'currency',
-      currency: 'PKR',
-      minimumFractionDigits: 0
-    }).format(price)
-  }
-
-  const getDiscountPercentage = (price: number, salePrice?: number) => {
-    if (!salePrice || salePrice >= price) return 0
-    return Math.round(((price - salePrice) / price) * 100)
-  }
-
   const contactForProduct = () => {
     if (product) {
       window.location.href = `/contact?product=${encodeURIComponent(product.name)}`
@@ -542,8 +529,6 @@ export default function ProductDetailPage() {
     )
   }
 
-  const displayPrice = product.salePrice || product.price
-  const discountPercentage = getDiscountPercentage(product.price, product.salePrice)
 
   return (
     <div className="min-h-screen bg-cool-gray">
@@ -602,15 +587,8 @@ export default function ProductDetailPage() {
           {/* Product Information */}
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl font-bold text-deep-indigo mb-4">{product.name}</h1>
+              <h1 className="text-4xl font-bold text-deep-indigo mb-6">{product.name}</h1>
               
-              <div className="flex items-center space-x-4 mb-6">
-                <span className="text-3xl font-bold text-electric-blue">{formatPrice(displayPrice)}</span>
-                {product.salePrice && (
-                  <span className="text-xl text-cool-gray line-through">{formatPrice(product.price)}</span>
-                )}
-              </div>
-
               <p className="text-lg text-charcoal leading-relaxed mb-6">{product.description}</p>
             </div>
 

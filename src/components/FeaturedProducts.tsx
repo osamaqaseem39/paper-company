@@ -38,23 +38,6 @@ export default function FeaturedProducts() {
     }
   }
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PK', {
-      style: 'currency',
-      currency: 'PKR',
-      minimumFractionDigits: 0
-    }).format(price)
-  }
-
-  const getDiscountPercentage = (price: number, salePrice?: number) => {
-    if (!salePrice || salePrice >= price) return 0
-    return Math.round(((price - salePrice) / price) * 100)
-  }
-
-  const viewProduct = (product: Product) => {
-    // Navigate to product details or contact page
-    window.location.href = `/contact?product=${encodeURIComponent(product.name)}`
-  }
 
   if (loading) {
     return (
@@ -93,11 +76,8 @@ export default function FeaturedProducts() {
       {/* Products Carousel */}
       <div className="relative">
         {/* Carousel Container */}
-        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide">
+        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide px-1">
           {products.map((product) => {
-            const discountPercentage = getDiscountPercentage(product.price, product.salePrice)
-            const displayPrice = product.salePrice || product.price
-            
             return (
               <div key={product._id} className="flex-shrink-0 w-80 group">
                 <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden">
@@ -124,13 +104,6 @@ export default function FeaturedProducts() {
                         </div>
                       )}
                     </div>
-                    
-                    {/* Discount Badge */}
-                    {discountPercentage > 0 && (
-                      <div className="absolute top-2 right-2 bg-golden-ochre text-pure-white text-xs font-bold px-2 py-1 rounded">
-                        -{discountPercentage}%
-                      </div>
-                    )}
                   </div>
 
                   {/* Product Content */}
@@ -139,38 +112,19 @@ export default function FeaturedProducts() {
                       {product.name}
                     </h3>
                     
-                    <p className="text-sm text-charcoal mb-4 line-clamp-2">
+                    <p className="text-sm text-charcoal mb-6 line-clamp-2">
                       {product.shortDescription || product.description}
                     </p>
                     
-                    <div className="flex items-center justify-center space-x-2 mb-4">
-                      <span className="text-2xl font-bold text-electric-blue">{formatPrice(displayPrice)}</span>
-                      {product.salePrice && (
-                        <span className="text-cool-gray line-through text-sm">{formatPrice(product.price)}</span>
-                      )}
-                    </div>
-                    
-                    
-                    <div className="flex items-center justify-center space-x-2 mb-4">
+                    <div className="flex items-center justify-center">
                       <Link
                         href={`/products/${product.slug}`}
-                        className="flex-1 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+                        className="w-full bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                       >
                         <Eye className="h-4 w-4" />
                         <span>View Details</span>
                       </Link>
                     </div>
-                    
-                    {/* Contact Button */}
-                    <Link 
-                      href={`/contact?product=${encodeURIComponent(product.name)}`}
-                      className="inline-flex items-center justify-center w-full bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 space-x-2"
-                    >
-                      <span>Contact for Details</span>
-                      <div className="w-5 h-5 bg-pure-white/20 rounded-full flex items-center justify-center">
-                        <div className="w-2 h-2 bg-pure-white rounded-full"></div>
-                      </div>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -190,10 +144,13 @@ export default function FeaturedProducts() {
         </div>
       </div>
       
-      {/* Contact for Products Button */}
+      {/* View All Products Button */}
       <div className="text-center mt-12">
-        <Link href="/contact" className="btn-secondary">
-          Contact for All Products
+        <Link 
+          href="/products" 
+          className="inline-flex items-center justify-center px-8 py-4 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+        >
+          View All Products
         </Link>
       </div>
     </div>

@@ -69,22 +69,6 @@ export default function ProductsPage() {
     setFilteredProducts(filtered)
   }, [products, searchTerm, selectedCategory])
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-PK', {
-      style: 'currency',
-      currency: 'PKR',
-      minimumFractionDigits: 0
-    }).format(price)
-  }
-
-  const getDiscountPercentage = (price: number, salePrice?: number) => {
-    if (!salePrice || salePrice >= price) return 0
-    return Math.round(((price - salePrice) / price) * 100)
-  }
-
-  const contactForProduct = (product: Product) => {
-    window.location.href = `/contact?product=${encodeURIComponent(product.name)}`
-  }
 
   useEffect(() => {
     fetchProducts()
@@ -233,9 +217,6 @@ export default function ProductsPage() {
             : "space-y-6"
         }>
           {filteredProducts.map((product) => {
-            const discountPercentage = getDiscountPercentage(product.price, product.salePrice)
-            const displayPrice = product.salePrice || product.price
-            
             return (
               <div key={product._id} className={viewMode === 'grid' ? "group" : "group"}>
                 <div className={`bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden ${
@@ -268,13 +249,6 @@ export default function ProductsPage() {
                         )}
                       </div>
                     </Link>
-                    
-                    {/* Discount Badge */}
-                    {discountPercentage > 0 && (
-                      <div className="absolute top-2 right-2 bg-golden-ochre text-pure-white text-xs font-bold px-2 py-1 rounded">
-                        -{discountPercentage}%
-                      </div>
-                    )}
                   </div>
 
                   {/* Product Content */}
@@ -285,38 +259,20 @@ export default function ProductsPage() {
                       {product.name}
                     </h3>
                     
-                    <p className={`text-sm text-charcoal mb-4 ${
+                    <p className={`text-sm text-charcoal mb-6 ${
                       viewMode === 'list' ? 'text-left' : 'line-clamp-2'
                     }`}>
                       {product.shortDescription || product.description}
                     </p>
                     
-                    <div className={`flex items-center space-x-2 mb-4 ${
-                      viewMode === 'list' ? 'justify-start' : 'justify-center'
-                    }`}>
-                      <span className="text-2xl font-bold text-electric-blue">{formatPrice(displayPrice)}</span>
-                      {product.salePrice && (
-                        <span className="text-cool-gray line-through text-sm">{formatPrice(product.price)}</span>
-                      )}
-                    </div>
-                    
-                    
-                    <div className={`flex space-x-2 ${viewMode === 'list' ? 'justify-start' : 'justify-center'}`}>
+                    <div className={`flex ${viewMode === 'list' ? 'justify-start' : 'justify-center'}`}>
                       <Link
                         href={`/products/${product.slug}`}
-                        className="flex-1 bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+                        className="w-full bg-electric-blue hover:bg-deep-indigo text-pure-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
                       >
                         <Eye className="h-4 w-4" />
                         <span>View Details</span>
                       </Link>
-                      
-                      <button
-                        onClick={() => contactForProduct(product)}
-                        className="flex-1 bg-golden-ochre hover:bg-golden-ochre/90 text-pure-white font-semibold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
-                      >
-                        <Phone className="h-4 w-4" />
-                        <span>Contact</span>
-                      </button>
                     </div>
                   </div>
                 </div>
