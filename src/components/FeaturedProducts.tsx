@@ -12,6 +12,11 @@ export default function FeaturedProducts() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const brandToLogo: Record<string, string> = {
+    hp: '/images/hplogo.png',
+    various: '/images/logo.png',
+  }
+
   useEffect(() => {
     fetchFeaturedProducts()
   }, [])
@@ -83,27 +88,39 @@ export default function FeaturedProducts() {
                 <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden">
                   {/* Product Image */}
                   <div className="relative bg-cool-gray h-64 overflow-hidden">
-                    <div className="relative h-full flex items-center justify-center">
-                      {product.images && product.images.length > 0 ? (
-                        <Image
-                          src={product.images[0].url}
-                          alt={product.images[0].alt || product.name}
-                          width={200}
-                          height={200}
-                          className="w-full h-full object-cover"
+                    {product.images && product.images.length > 0 ? (
+                      <Image
+                        src={product.images[0].url}
+                        alt={product.images[0].alt || product.name}
+                        fill
+                        className="object-contain p-4"
+                        sizes="320px"
+                        quality={95}
+                        priority={false}
+                      />
+                    ) : (
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        <Image 
+                          src="/images/hplogo.png" 
+                          alt="HP Logo" 
+                          width={96} 
+                          height={96} 
+                          className="object-contain"
+                          quality={95}
                         />
-                      ) : (
-                        <div className="w-24 h-24 mx-auto">
-                          <Image 
-                            src="/images/hplogo.png" 
-                            alt="HP Logo" 
-                            width={96} 
-                            height={96} 
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
+                    {product.brand && (
+                      <div className="absolute top-2 left-2 bg-pure-white/90 border border-cool-gray/50 rounded-md p-1 shadow-sm">
+                        <Image
+                          src={brandToLogo[product.brand] || '/images/logo.png'}
+                          alt={product.brand}
+                          width={24}
+                          height={24}
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Product Content */}

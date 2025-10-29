@@ -13,6 +13,11 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const brandToLogo: Record<string, string> = {
+    hp: '/images/hplogo.png',
+    various: '/images/logo.png',
+  }
+
   // Enhanced product data with new descriptions and images
   const productDatabase: Product[] = useMemo(() => [
     {
@@ -550,14 +555,16 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="relative aspect-square bg-white rounded-2xl shadow-lg overflow-hidden">
               {product.images && product.images.length > 0 ? (
                 <Image
                   src={product.images[0].url}
                   alt={product.images[0].alt || product.name}
-                  width={600}
-                  height={600}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-contain p-6"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={100}
+                  priority={true}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-100">
@@ -570,13 +577,14 @@ export default function ProductDetailPage() {
             {product.images && product.images.length > 1 && (
               <div className="grid grid-cols-2 gap-4">
                 {product.images.slice(1).map((image, index) => (
-                  <div key={index} className="aspect-square bg-white rounded-lg shadow-md overflow-hidden">
+                  <div key={index} className="relative aspect-square bg-white rounded-lg shadow-md overflow-hidden">
                     <Image
                       src={image.url}
                       alt={image.alt || `${product.name} - View ${index + 2}`}
-                      width={300}
-                      height={300}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      quality={95}
                     />
                   </div>
                 ))}
@@ -587,7 +595,14 @@ export default function ProductDetailPage() {
           {/* Product Information */}
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl font-bold text-deep-indigo mb-6">{product.name}</h1>
+              <div className="flex items-center gap-3 mb-6">
+                {product.brand && (
+                  <span className="inline-flex items-center justify-center w-10 h-10 bg-pure-white border border-cool-gray/50 rounded-md shadow-sm">
+                    <Image src={brandToLogo[product.brand] || '/images/logo.png'} alt={product.brand} width={28} height={28} className="object-contain" />
+                  </span>
+                )}
+                <h1 className="text-4xl font-bold text-deep-indigo">{product.name}</h1>
+              </div>
               
               <p className="text-lg text-charcoal leading-relaxed mb-6">{product.description}</p>
             </div>
@@ -615,7 +630,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-classic-black">FSC Certified</h4>
-                    <p className="text-sm text-cool-gray">Sustainable forestry practices</p>
+                    <p className="text-sm text-charcoal">Sustainable forestry practices</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -624,7 +639,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-classic-black">HP Quality</h4>
-                    <p className="text-sm text-cool-gray">Global brand standards</p>
+                    <p className="text-sm text-charcoal">Global brand standards</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -633,7 +648,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-classic-black">Brazilian Origin</h4>
-                    <p className="text-sm text-cool-gray">Direct from Brazil</p>
+                    <p className="text-sm text-charcoal">Direct from Brazil</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -642,7 +657,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-classic-black">Sole Distributor</h4>
-                    <p className="text-sm text-cool-gray">Exclusive in Pakistan</p>
+                    <p className="text-sm text-charcoal">Exclusive in Pakistan</p>
                   </div>
                 </div>
               </div>
@@ -672,15 +687,15 @@ export default function ProductDetailPage() {
               <h3 className="text-xl font-bold text-classic-black mb-4">Product Information</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-cool-gray">Brand:</span>
+                  <span className="text-charcoal">Brand:</span>
                   <span className="text-charcoal font-medium">{product.brand?.toUpperCase()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-cool-gray">Category:</span>
+                  <span className="text-charcoal">Category:</span>
                   <span className="text-charcoal font-medium capitalize">{product.category?.replace('-', ' ')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-cool-gray">Stock:</span>
+                  <span className="text-charcoal">Stock:</span>
                   <span className="text-charcoal font-medium">{product.stock} units available</span>
                 </div>
               </div>
@@ -694,7 +709,7 @@ export default function ProductDetailPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-classic-black mb-4">Why Choose HP Paper?</h2>
-            <p className="text-xl text-cool-gray max-w-3xl mx-auto">
+            <p className="text-xl text-charcoal max-w-3xl mx-auto">
               Premium quality paper solutions with environmental responsibility
             </p>
           </div>
@@ -705,7 +720,7 @@ export default function ProductDetailPage() {
                 <Leaf className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-classic-black mb-2">FSC Certified</h3>
-              <p className="text-cool-gray">Sustainable forestry practices and environmental responsibility</p>
+              <p className="text-charcoal">Sustainable forestry practices and environmental responsibility</p>
             </div>
             
             <div className="text-center">
@@ -713,7 +728,7 @@ export default function ProductDetailPage() {
                 <Award className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-classic-black mb-2">Global Brand</h3>
-              <p className="text-cool-gray">Trusted worldwide with consistent quality standards</p>
+              <p className="text-charcoal">Trusted worldwide with consistent quality standards</p>
             </div>
             
             <div className="text-center">
@@ -721,7 +736,7 @@ export default function ProductDetailPage() {
                 <Globe className="h-8 w-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-classic-black mb-2">Brazilian Origin</h3>
-              <p className="text-cool-gray">Direct from Brazil with guaranteed authenticity</p>
+              <p className="text-charcoal">Direct from Brazil with guaranteed authenticity</p>
             </div>
             
             <div className="text-center">
@@ -729,7 +744,7 @@ export default function ProductDetailPage() {
                 <Users className="h-8 w-8 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold text-classic-black mb-2">Sole Distributor</h3>
-              <p className="text-cool-gray">Exclusive distribution rights in Pakistan</p>
+              <p className="text-charcoal">Exclusive distribution rights in Pakistan</p>
             </div>
           </div>
         </div>

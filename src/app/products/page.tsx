@@ -16,6 +16,11 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
+  const brandToLogo: Record<string, string> = {
+    hp: '/images/hplogo.png',
+    various: '/images/logo.png',
+  }
+
   const categories = [
     { value: 'all', label: 'All Products' },
     { value: 'copy-paper', label: 'Copy Paper' },
@@ -226,29 +231,40 @@ export default function ProductsPage() {
                   <div className={`relative bg-cool-gray overflow-hidden ${
                     viewMode === 'list' ? 'w-64 h-48 flex-shrink-0' : 'h-64'
                   }`}>
-                    <Link href={`/products/${product.slug}`} className="block h-full">
-                      <div className="relative h-full flex items-center justify-center hover:scale-105 transition-transform duration-300">
-                        {product.images && product.images.length > 0 ? (
-                          <Image
-                            src={product.images[0].url}
-                            alt={product.images[0].alt || product.name}
-                            width={200}
-                            height={200}
-                            className="w-full h-full object-cover"
+                    <Link href={`/products/${product.slug}`} className="block h-full w-full">
+                      {product.images && product.images.length > 0 ? (
+                        <Image
+                          src={product.images[0].url}
+                          alt={product.images[0].alt || product.name}
+                          fill
+                          className="object-contain p-4"
+                          sizes={viewMode === 'list' ? "256px" : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"}
+                          quality={95}
+                        />
+                      ) : (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <Image 
+                            src="/images/hplogo.png" 
+                            alt="HP Logo" 
+                            width={96} 
+                            height={96} 
+                            className="object-contain"
+                            quality={95}
                           />
-                        ) : (
-                          <div className="w-24 h-24 mx-auto">
-                            <Image 
-                              src="/images/hplogo.png" 
-                              alt="HP Logo" 
-                              width={96} 
-                              height={96} 
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </Link>
+                    {product.brand && (
+                      <div className="absolute top-2 left-2 bg-pure-white/90 border border-cool-gray/50 rounded-md p-1 shadow-sm">
+                        <Image
+                          src={brandToLogo[product.brand] || '/images/logo.png'}
+                          alt={product.brand}
+                          width={24}
+                          height={24}
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Product Content */}

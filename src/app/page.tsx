@@ -464,7 +464,7 @@ export default async function Home() {
             <h2 className="text-4xl md:text-5xl font-black text-pure-white mb-6">
               Why Choose <span className="text-golden-ochre">Us?</span>
             </h2>
-            <p className="text-xl text-pure-white/90 max-w-3xl mx-auto">
+            <p className="text-xl text-pure-white max-w-3xl mx-auto">
               Decades of experience and thousands of satisfied customers across Pakistan
             </p>
           </div>
@@ -476,7 +476,7 @@ export default async function Home() {
                   <feature.icon className="h-10 w-10 text-pure-white" />
                 </div>
                 <h3 className="text-xl font-black text-pure-white mb-2">{feature.title}</h3>
-                <p className="text-pure-white/90">{feature.description}</p>
+                <p className="text-pure-white">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -550,7 +550,7 @@ export default async function Home() {
                     <Phone className="w-6 h-6 text-electric-blue mt-1" />
                     <div>
                       <p className="text-charcoal">Ph: 92-42-37231507, 37224717, 37229093, 37232148, 37361619, 37356771, 37321223</p>
-                      <p className="text-cool-gray text-sm">Fax: 92-42-37321012, 37361620</p>
+                      <p className="text-charcoal text-sm">Fax: 92-42-37321012, 37361620</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
