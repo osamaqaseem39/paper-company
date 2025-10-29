@@ -1,30 +1,305 @@
 import { Product, ApiResponse } from '../types/product.types'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://paper-company-server.vercel.app/api'
+// Local products data
+const LOCAL_PRODUCTS: Product[] = [
+  {
+    _id: '1',
+    name: 'HP Business Copy Paper Hi White',
+    slug: 'hp-business-copy-paper-hi-white',
+    description: 'A lightweight and economical paper designed primarily for high-volume copying and draft printing within a business environment. The "Hi White" finish provides good contrast for clear, easy-to-read text, making it suitable for internal memos, drafts, and everyday black-and-white copies where paper weight is less critical.',
+    shortDescription: 'Lightweight and economical paper for high-volume copying and draft printing',
+    sku: 'HP-BCP-70',
+    price: 950,
+    salePrice: 850,
+    stock: 100,
+    minStock: 10,
+    images: [
+      { url: '/images/HP Business Copy Paper blue.jpg', alt: 'HP Business Copy Paper Hi White' },
+      { url: '/images/HP Business Copy Paper 2 blue.webp', alt: 'HP Business Copy Paper Hi White - Alternative view' }
+    ],
+    category: 'copy-paper',
+    brand: 'hp',
+    tags: ['copy-paper', 'business', 'hi-white', '70gsm'],
+    attributes: ['70gsm', 'Hi White', 'Business Grade', 'High Volume'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: true,
+    isDigital: false,
+    reviews: [],
+    rating: 4.8,
+    reviewCount: 124,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '2',
+    name: 'HP Office Paper Hi White',
+    slug: 'hp-office-paper-hi-white',
+    description: 'A versatile, standard-weight paper ideal for general office use. Slightly heavier than basic copy paper, it offers better opacity and a more substantial feel for everyday printing tasks like emails, reports, faxes, and copies. The "Hi White" surface ensures crisp text and clear black-and-white graphics.',
+    shortDescription: 'Versatile, standard-weight paper ideal for general office use with superior brightness',
+    sku: 'HP-OP-75',
+    price: 1020,
+    salePrice: 920,
+    stock: 80,
+    minStock: 10,
+    images: [
+      { url: '/images/HP Office paper (green).jpg', alt: 'HP Office Paper Hi White' },
+      { url: '/images/HP Office paper (green)#.png', alt: 'HP Office Paper Hi White - Alternative view' }
+    ],
+    category: 'office-paper',
+    brand: 'hp',
+    tags: ['office-paper', 'hi-white', '75gsm', 'versatile'],
+    attributes: ['75gsm', 'Hi White', 'Office Grade', 'Versatile'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: true,
+    isDigital: false,
+    reviews: [],
+    rating: 4.9,
+    reviewCount: 89,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '3',
+    name: 'HP Everyday Paper Hi White',
+    slug: 'hp-everyday-paper-hi-white',
+    description: 'Considered a standard, reliable paper weight, this 80gsm option is perfect for everyday printing needs at home or in the office. It provides a good balance of thickness, opacity (reducing show-through on double-sided prints), and smooth performance in most printers and copiers.',
+    shortDescription: 'Standard, reliable 80gsm paper perfect for everyday printing needs',
+    sku: 'HP-EDP-80',
+    price: 1100,
+    salePrice: 990,
+    stock: 90,
+    minStock: 10,
+    images: [
+      { url: '/images/HP Everyday paper (orange).webp', alt: 'HP Everyday Paper Hi White' },
+      { url: '/images/HP Everyday paper (orange) 2.jpg', alt: 'HP Everyday Paper Hi White - Alternative view' }
+    ],
+    category: 'everyday-paper',
+    brand: 'hp',
+    tags: ['everyday-paper', 'hi-white', '80gsm', 'reliable'],
+    attributes: ['80gsm', 'Hi White', 'Everyday Grade', 'Reliable'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: true,
+    isDigital: false,
+    reviews: [],
+    rating: 4.7,
+    reviewCount: 156,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '4',
+    name: 'HP LaserJet Paper Hi White',
+    slug: 'hp-laserjet-paper-hi-white',
+    description: 'A heavier, more premium paper specifically optimized for LaserJet printers. The 90gsm weight gives documents a substantial, professional feel and increased opacity, ideal for double-sided printing, presentations, proposals, and important business documents. Its surface is engineered for excellent toner adhesion.',
+    shortDescription: 'Premium 90gsm paper specifically optimized for LaserJet printers',
+    sku: 'HP-LJP-90',
+    price: 1200,
+    salePrice: 1100,
+    stock: 60,
+    minStock: 10,
+    images: [
+      { url: '/images/HP Laserjet paper ( dark green).jpg', alt: 'HP LaserJet Paper Hi White' },
+      { url: '/images/HP Laserjet paper ((dark green)).jpg', alt: 'HP LaserJet Paper Hi White - Alternative view' }
+    ],
+    category: 'laser-jet',
+    brand: 'hp',
+    tags: ['laser-jet', 'hi-white', '90gsm', 'premium'],
+    attributes: ['90gsm', 'Hi White', 'LaserJet Optimized', 'Premium'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: true,
+    isDigital: false,
+    reviews: [],
+    rating: 4.9,
+    reviewCount: 203,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: 'c1',
+    name: '2/S Coated Art Paper / Matt Paper',
+    slug: 'two-side-coated-art-paper-matt',
+    description: 'Premium two-side coated art paper available in gloss and matt finishes. Ideal for brochures, magazines, catalogs, and high-quality color printing with excellent ink holdout and smoothness.',
+    shortDescription: 'Two-side coated art paper for premium color printing',
+    sku: 'COATED-ART-2S',
+    price: 0,
+    stock: 0,
+    minStock: 0,
+    images: [{ url: '/images/hplogo.png', alt: '2/S Coated Art Paper / Matt Paper' }],
+    category: 'coated-paper-board',
+    brand: 'various',
+    tags: ['coated', 'art-paper', '2/s', 'gloss', 'matt'],
+    attributes: ['Two-side coated', 'Gloss/Matt finish', 'High-quality color output'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: false,
+    isDigital: false,
+    reviews: [],
+    rating: 5,
+    reviewCount: 0,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: 'c2',
+    name: '2/S Coated Paper & Board (Glossy/Matt)',
+    slug: 'two-side-coated-paper-board',
+    description: 'Versatile two-side coated paper and board in glossy and matt options for packaging, covers, postcards, and premium print applications.',
+    shortDescription: 'Coated paper & board for covers and packaging',
+    sku: 'COATED-BOARD-2S',
+    price: 0,
+    stock: 0,
+    minStock: 0,
+    images: [{ url: '/images/hplogo.png', alt: '2/S Coated Paper & Board (Glossy/Matt)' }],
+    category: 'coated-paper-board',
+    brand: 'various',
+    tags: ['coated', 'board', 'gloss', 'matt'],
+    attributes: ['Two-side coated', 'Gloss/Matt', 'Rigid board options'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: false,
+    isDigital: false,
+    reviews: [],
+    rating: 5,
+    reviewCount: 0,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: 'f1',
+    name: '1/S Coated Folding Box Board (White Back)',
+    slug: 'fbb-white-back-1s',
+    description: 'Folding Box Board with bleached white back and one-side coated top surface for high-quality printing and packaging.',
+    shortDescription: 'FBB white back for premium folding cartons',
+    sku: 'FBB-WB-1S',
+    price: 0,
+    stock: 0,
+    minStock: 0,
+    images: [{ url: '/images/hplogo.png', alt: '1/S Coated Folding Box Board White Back' }],
+    category: 'fbb-duplex-board',
+    brand: 'various',
+    tags: ['fbb', 'white-back', '1/s'],
+    attributes: ['White back', 'One-side coated', 'High stiffness'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: false,
+    isDigital: false,
+    reviews: [],
+    rating: 5,
+    reviewCount: 0,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: 'u1',
+    name: 'Uncoated Woodfree Offset Paper',
+    slug: 'uncoated-woodfree-offset-paper',
+    description: 'High-quality uncoated woodfree offset paper for books, forms, manuals, and general print applications with excellent runnability.',
+    shortDescription: 'Uncoated woodfree paper for offset printing',
+    sku: 'UWF-OFFSET',
+    price: 0,
+    stock: 0,
+    minStock: 0,
+    images: [{ url: '/images/hplogo.png', alt: 'Uncoated Woodfree Offset Paper' }],
+    category: 'uncoated-offset',
+    brand: 'various',
+    tags: ['uncoated', 'woodfree', 'offset'],
+    attributes: ['Good opacity', 'Smooth uncoated surface', 'Reliable runnability'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: false,
+    isDigital: false,
+    reviews: [],
+    rating: 5,
+    reviewCount: 0,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: 's1',
+    name: 'Newsprint Paper',
+    slug: 'newsprint-paper',
+    description: 'Economical lightweight paper for newspapers, flyers, and inserts. Designed for high-speed web presses with good opacity and ink absorption.',
+    shortDescription: 'Lightweight economical paper for newsprint applications',
+    sku: 'NEWSPRINT',
+    price: 0,
+    stock: 0,
+    minStock: 0,
+    images: [{ url: '/images/hplogo.png', alt: 'Newsprint Paper' }],
+    category: 'specialty',
+    brand: 'various',
+    tags: ['newsprint', 'web-press'],
+    attributes: ['Lightweight', 'Good opacity', 'Economical'],
+    variations: [],
+    seo: {},
+    status: 'published',
+    isActive: true,
+    isFeatured: false,
+    isDigital: false,
+    reviews: [],
+    rating: 5,
+    reviewCount: 0,
+    viewCount: 0,
+    salesCount: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+]
 
 export const productService = {
   async getFeaturedProducts(limit: number = 6): Promise<ApiResponse<{ products: Product[] }>> {
-    try {
-      const res = await fetch(`${API_BASE_URL}/products/featured?limit=${limit}`, { cache: 'no-store' })
-      if (!res.ok) {
-        const err = await safeJson(res)
-        return { success: false, message: err?.message || 'Failed to fetch featured products' }
-      }
-      const json = await res.json()
-      // Expect backend shape { data: Product[] }
-      const products: Product[] = json?.data ?? []
-      return { success: true, data: { products } }
-    } catch (e) {
-      return { success: false, message: 'Network error while fetching featured products' }
+    // Return local products data only - no API calls
+    const featuredProducts = LOCAL_PRODUCTS.filter(product => product.isFeatured && product.isActive)
+    const limitedProducts = featuredProducts.slice(0, limit)
+    
+    return {
+      success: true,
+      data: { products: limitedProducts }
+    }
+  },
+  
+  async getAllProducts(): Promise<ApiResponse<{ products: Product[] }>> {
+    // Return all local products - no API calls
+    const activeProducts = LOCAL_PRODUCTS.filter(product => product.isActive)
+    
+    return {
+      success: true,
+      data: { products: activeProducts }
     }
   },
 }
-
-async function safeJson(res: Response): Promise<any | undefined> {
-  try {
-    return await res.json()
-  } catch {
-    return undefined
-  }
-}
-
