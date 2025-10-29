@@ -5,6 +5,7 @@ import Image from 'next/image'
 import FeaturedProducts from '../components/FeaturedProducts'
 import { brandService } from '@/services/brandService'
 import BrandsGrid from '@/components/BrandsGrid'
+import type { Brand } from '@/types/brand.types'
 
 export const metadata: Metadata = {
   title: 'Trade International - Paper Trading Company Pakistan | HP Papers Distributor',
@@ -107,8 +108,200 @@ export default async function Home() {
     }
   ]
 
-  const brandsRes = await brandService.getActiveBrands(12, 1)
-  const brands = brandsRes.success ? brandsRes.data?.brands ?? [] : []
+  // Fetch brands with fallback data
+  let brands: Brand[] = []
+  try {
+    const brandsRes = await brandService.getActiveBrands(12, 1)
+    if (brandsRes.success && brandsRes.data?.brands?.length > 0) {
+      brands = brandsRes.data.brands
+    } else {
+      // Fallback brand data if API fails or returns empty
+      brands = [
+        {
+          _id: '1',
+          name: 'HP Papers',
+          slug: 'hp-papers',
+          logo: '/images/hp logo.png',
+          country: 'Brazil',
+          website: 'https://www.hp.com',
+          isActive: true
+        },
+        {
+          _id: '2',
+          name: 'International Paper',
+          slug: 'international-paper',
+          logo: '/images/international paper (black).jpg',
+          country: 'USA',
+          isActive: true
+        },
+        {
+          _id: '3',
+          name: 'Sappi',
+          slug: 'sappi',
+          logo: '/images/SAPPI.jpg',
+          country: 'South Africa',
+          isActive: true
+        },
+        {
+          _id: '4',
+          name: 'Nippon Paper Industries',
+          slug: 'nippon-paper-industries',
+          logo: '/images/NIPPON PAPER INDUS.jpg',
+          country: 'Japan',
+          isActive: true
+        },
+        {
+          _id: '5',
+          name: 'Oji Paper',
+          slug: 'oji-paper',
+          logo: '/images/OJI PAPER.jpg',
+          country: 'Japan',
+          isActive: true
+        },
+        {
+          _id: '6',
+          name: 'Daio Paper Corporation',
+          slug: 'daio-paper-corporation',
+          logo: '/images/DAIO PAPER CORPORAITON.jpg',
+          country: 'Japan',
+          isActive: true
+        },
+        {
+          _id: '7',
+          name: 'Moorim',
+          slug: 'moorim',
+          logo: '/images/MOORIM LOGO.jpg',
+          country: 'South Korea',
+          isActive: true
+        },
+        {
+          _id: '8',
+          name: 'Kruger Products',
+          slug: 'kruger-products',
+          logo: '/images/KRUGER PRODUCTS.jpg',
+          country: 'Canada',
+          isActive: true
+        },
+        {
+          _id: '9',
+          name: 'Chenming Paper',
+          slug: 'chenming-paper',
+          logo: '/images/Chenmingpaper.png',
+          country: 'China',
+          isActive: true
+        },
+        {
+          _id: '10',
+          name: 'Iggesund Holmen',
+          slug: 'iggesund-holmen',
+          logo: '/images/IGGESUND HOLMEN GRP.jpg',
+          country: 'Sweden',
+          isActive: true
+        },
+        {
+          _id: '11',
+          name: 'Artone',
+          slug: 'artone',
+          logo: '/images/ARTONE LOGO.jpg',
+          country: 'Japan',
+          isActive: true
+        }
+      ]
+    }
+  } catch (error) {
+    // Use fallback brands on error
+    brands = [
+      {
+        _id: '1',
+        name: 'HP Papers',
+        slug: 'hp-papers',
+        logo: '/images/hp logo.png',
+        country: 'Brazil',
+        website: 'https://www.hp.com',
+        isActive: true
+      },
+      {
+        _id: '2',
+        name: 'International Paper',
+        slug: 'international-paper',
+        logo: '/images/international paper (black).jpg',
+        country: 'USA',
+        isActive: true
+      },
+      {
+        _id: '3',
+        name: 'Sappi',
+        slug: 'sappi',
+        logo: '/images/SAPPI.jpg',
+        country: 'South Africa',
+        isActive: true
+      },
+      {
+        _id: '4',
+        name: 'Nippon Paper Industries',
+        slug: 'nippon-paper-industries',
+        logo: '/images/NIPPON PAPER INDUS.jpg',
+        country: 'Japan',
+        isActive: true
+      },
+      {
+        _id: '5',
+        name: 'Oji Paper',
+        slug: 'oji-paper',
+        logo: '/images/OJI PAPER.jpg',
+        country: 'Japan',
+        isActive: true
+      },
+      {
+        _id: '6',
+        name: 'Daio Paper Corporation',
+        slug: 'daio-paper-corporation',
+        logo: '/images/DAIO PAPER CORPORAITON.jpg',
+        country: 'Japan',
+        isActive: true
+      },
+      {
+        _id: '7',
+        name: 'Moorim',
+        slug: 'moorim',
+        logo: '/images/MOORIM LOGO.jpg',
+        country: 'South Korea',
+        isActive: true
+      },
+      {
+        _id: '8',
+        name: 'Kruger Products',
+        slug: 'kruger-products',
+        logo: '/images/KRUGER PRODUCTS.jpg',
+        country: 'Canada',
+        isActive: true
+      },
+      {
+        _id: '9',
+        name: 'Chenming Paper',
+        slug: 'chenming-paper',
+        logo: '/images/Chenmingpaper.png',
+        country: 'China',
+        isActive: true
+      },
+      {
+        _id: '10',
+        name: 'Iggesund Holmen',
+        slug: 'iggesund-holmen',
+        logo: '/images/IGGESUND HOLMEN GRP.jpg',
+        country: 'Sweden',
+        isActive: true
+      },
+      {
+        _id: '11',
+        name: 'Artone',
+        slug: 'artone',
+        logo: '/images/ARTONE LOGO.jpg',
+        country: 'Japan',
+        isActive: true
+      }
+    ]
+  }
 
   return (
     <div className="min-h-screen bg-pure-white">
