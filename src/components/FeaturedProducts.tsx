@@ -78,14 +78,14 @@ export default function FeaturedProducts() {
 
   return (
     <div className="space-y-8 w-full">
-      {/* Products Carousel */}
+      {/* Products Grid */}
       <div className="relative w-full">
-        {/* Carousel Container */}
-        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide w-full">
+        {/* Grid Container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6 w-full">
           {products.map((product) => {
             return (
-              <div key={product._id} className="flex-shrink-0 w-80 group">
-                <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden">
+              <div key={product._id} className="w-full group">
+                <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden h-full flex flex-col">
                   {/* Product Image */}
                   <div className="relative bg-cool-gray h-64 overflow-hidden">
                     {product.images && product.images.length > 0 ? (
@@ -94,7 +94,7 @@ export default function FeaturedProducts() {
                         alt={product.images[0].alt || product.name}
                         fill
                         className="object-contain p-4"
-                        sizes="320px"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, (max-width: 1536px) 25vw, 16vw"
                         quality={95}
                         priority={false}
                       />
@@ -124,12 +124,12 @@ export default function FeaturedProducts() {
                   </div>
 
                   {/* Product Content */}
-                  <div className="p-6 text-center">
+                  <div className="p-6 text-center flex-1 flex flex-col">
                     <h3 className="text-xl font-bold text-classic-black mb-4 group-hover:text-electric-blue transition-colors duration-300">
                       {product.name}
                     </h3>
                     
-                    <p className="text-sm text-charcoal mb-6 line-clamp-2">
+                    <p className="text-sm text-charcoal mb-6 line-clamp-2 flex-1">
                       {product.shortDescription || product.description}
                     </p>
                     
@@ -147,17 +147,6 @@ export default function FeaturedProducts() {
               </div>
             )
           })}
-        </div>
-
-        {/* Carousel Navigation Dots */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              className="w-3 h-3 bg-cool-gray rounded-full hover:bg-electric-blue transition-colors duration-300 focus:outline-none"
-              aria-label={`Go to slide ${index + 1}`}
-            ></button>
-          ))}
         </div>
       </div>
       
