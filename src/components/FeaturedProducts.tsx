@@ -77,11 +77,11 @@ export default function FeaturedProducts() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 w-full">
       {/* Products Carousel */}
-      <div className="relative">
+      <div className="relative w-full">
         {/* Carousel Container */}
-        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide px-1">
+        <div className="flex space-x-6 overflow-x-auto pb-6 scrollbar-hide w-full">
           {products.map((product) => {
             return (
               <div key={product._id} className="flex-shrink-0 w-80 group">
