@@ -77,14 +77,14 @@ export default function FeaturedProducts() {
   }
 
   return (
-    <div className="space-y-8 w-full">
+    <div className="space-y-8 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
       {/* Products Grid */}
       <div className="relative w-full">
         {/* Grid Container */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-8 w-full">
           {products.map((product) => {
             return (
-              <div key={product._id} className="w-full group">
+              <div key={product._id} className="w-full group min-w-0">
                 <div className="bg-pure-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cool-gray/50 overflow-hidden h-full flex flex-col">
                   {/* Product Image */}
                   <div className="relative bg-cool-gray h-64 overflow-hidden">

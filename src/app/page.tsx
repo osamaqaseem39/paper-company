@@ -228,8 +228,8 @@ export default async function Home() {
 
       {/* Popular Products Section */}
       <section className="section-padding bg-cool-gray">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm font-medium mb-6">
               <Award className="w-4 h-4 mr-2" />
               Premium Product Range
@@ -243,9 +243,9 @@ export default async function Home() {
               Discover our most popular paper products trusted by businesses across Pakistan
             </p>
           </div>
-          
-          <FeaturedProducts />
         </div>
+        
+        <FeaturedProducts />
       </section>
 
       {/* Who We Are Section */}
